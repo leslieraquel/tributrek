@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\tributrek.Dominio.Modelo\tributrek.Dominio.Modelo.csproj" />
+    <ProjectReference Include="..\tributrek.Dominio.Servicio\tributrek.Dominio.Servicio.csproj" />
+    <ProjectReference Include="..\tributrek.Infraestructura.AccesoDatos\tributrek.Infraestructura.AccesoDatos.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ServicioImpl\" />
+    <Folder Include="Servicio\" />
+  </ItemGroup>
+
+</Project>

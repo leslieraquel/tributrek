@@ -1,0 +1,101 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36202.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tributrek", "tributrek\tributrek.csproj", "{41C81C7F-1766-477A-A550-6D526CA0AEE0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. InterfazUsuario", "1. InterfazUsuario", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Aplicacion", "2. Aplicacion", "{5185C26C-D404-4EF1-99F1-BC34C146420C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Dominio", "3. Dominio", "{67BB8791-4E25-4E5D-82FF-D88EEEFF4095}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. Infraestructura", "4. Infraestructura", "{70BF0CE6-8E3B-4672-9037-1A1D6BAA23F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tributrek.Aplicacion", "tributrek.Aplicacion\tributrek.Aplicacion.csproj", "{CF171EC6-70B1-4DC6-8551-613FB824E8E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tributrek.Aplicacion.DTO", "tributrek.Aplicacion.DTO\tributrek.Aplicacion.DTO.csproj", "{7672ED92-2745-4237-94B2-ADE5E4CBF473}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tributrek.Dominio.Modelo", "tributrek.Dominio.Modelo\tributrek.Dominio.Modelo.csproj", "{7749220D-F0C0-4060-9EEC-822E5DF1CFBA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tributrek.Infraestructura.CrossCuting", "tributrek.Infraestructura.CrossCuting\tributrek.Infraestructura.CrossCuting.csproj", "{CF64F0D0-2043-4455-8EC1-E8410F4E1DC1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tributrek.Dominio.Servicio", "tributrek.Dominio.Servicio\tributrek.Dominio.Servicio.csproj", "{2B2816C2-645A-41BE-888D-FCBAF07D5D8A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tributrek.Infraestructura.AccesoDatos", "tributrek.Infraestructura.AccesoDatos\tributrek.Infraestructura.AccesoDatos.csproj", "{0E23E479-F71C-499E-B219-666F41BCCE67}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tributrek.Infraestructura.ServicioExterno", "tributrek.Infraestructura.ServicioExterno\tributrek.Infraestructura.ServicioExterno.csproj", "{D6EC3044-23D8-46A9-935A-DDDC80055B19}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tributrek.Infraestructura.ServicioEmail", "tributrek.Infraestructura.ServicioEmail\tributrek.Infraestructura.ServicioEmail.csproj", "{FF93F0E5-7292-4240-95F9-4D98EBED5142}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5. test", "5. test", "{5E41B993-422E-4753-A99B-D5F06D94B8CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testTributrek", "testTributrek\testTributrek.csproj", "{DA241AE0-388E-4CC6-A5AD-87B1D7D50CB5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{41C81C7F-1766-477A-A550-6D526CA0AEE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41C81C7F-1766-477A-A550-6D526CA0AEE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41C81C7F-1766-477A-A550-6D526CA0AEE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41C81C7F-1766-477A-A550-6D526CA0AEE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF171EC6-70B1-4DC6-8551-613FB824E8E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF171EC6-70B1-4DC6-8551-613FB824E8E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF171EC6-70B1-4DC6-8551-613FB824E8E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF171EC6-70B1-4DC6-8551-613FB824E8E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7672ED92-2745-4237-94B2-ADE5E4CBF473}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7672ED92-2745-4237-94B2-ADE5E4CBF473}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7672ED92-2745-4237-94B2-ADE5E4CBF473}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7672ED92-2745-4237-94B2-ADE5E4CBF473}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7749220D-F0C0-4060-9EEC-822E5DF1CFBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7749220D-F0C0-4060-9EEC-822E5DF1CFBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7749220D-F0C0-4060-9EEC-822E5DF1CFBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7749220D-F0C0-4060-9EEC-822E5DF1CFBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF64F0D0-2043-4455-8EC1-E8410F4E1DC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF64F0D0-2043-4455-8EC1-E8410F4E1DC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF64F0D0-2043-4455-8EC1-E8410F4E1DC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF64F0D0-2043-4455-8EC1-E8410F4E1DC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B2816C2-645A-41BE-888D-FCBAF07D5D8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B2816C2-645A-41BE-888D-FCBAF07D5D8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B2816C2-645A-41BE-888D-FCBAF07D5D8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B2816C2-645A-41BE-888D-FCBAF07D5D8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E23E479-F71C-499E-B219-666F41BCCE67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E23E479-F71C-499E-B219-666F41BCCE67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E23E479-F71C-499E-B219-666F41BCCE67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E23E479-F71C-499E-B219-666F41BCCE67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6EC3044-23D8-46A9-935A-DDDC80055B19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6EC3044-23D8-46A9-935A-DDDC80055B19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6EC3044-23D8-46A9-935A-DDDC80055B19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6EC3044-23D8-46A9-935A-DDDC80055B19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF93F0E5-7292-4240-95F9-4D98EBED5142}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF93F0E5-7292-4240-95F9-4D98EBED5142}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF93F0E5-7292-4240-95F9-4D98EBED5142}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF93F0E5-7292-4240-95F9-4D98EBED5142}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA241AE0-388E-4CC6-A5AD-87B1D7D50CB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA241AE0-388E-4CC6-A5AD-87B1D7D50CB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA241AE0-388E-4CC6-A5AD-87B1D7D50CB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA241AE0-388E-4CC6-A5AD-87B1D7D50CB5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{41C81C7F-1766-477A-A550-6D526CA0AEE0} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{CF171EC6-70B1-4DC6-8551-613FB824E8E1} = {5185C26C-D404-4EF1-99F1-BC34C146420C}
+		{7672ED92-2745-4237-94B2-ADE5E4CBF473} = {5185C26C-D404-4EF1-99F1-BC34C146420C}
+		{7749220D-F0C0-4060-9EEC-822E5DF1CFBA} = {67BB8791-4E25-4E5D-82FF-D88EEEFF4095}
+		{CF64F0D0-2043-4455-8EC1-E8410F4E1DC1} = {70BF0CE6-8E3B-4672-9037-1A1D6BAA23F5}
+		{2B2816C2-645A-41BE-888D-FCBAF07D5D8A} = {67BB8791-4E25-4E5D-82FF-D88EEEFF4095}
+		{0E23E479-F71C-499E-B219-666F41BCCE67} = {70BF0CE6-8E3B-4672-9037-1A1D6BAA23F5}
+		{D6EC3044-23D8-46A9-935A-DDDC80055B19} = {70BF0CE6-8E3B-4672-9037-1A1D6BAA23F5}
+		{FF93F0E5-7292-4240-95F9-4D98EBED5142} = {70BF0CE6-8E3B-4672-9037-1A1D6BAA23F5}
+		{DA241AE0-388E-4CC6-A5AD-87B1D7D50CB5} = {5E41B993-422E-4753-A99B-D5F06D94B8CE}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AEF0E8AD-B427-4054-80D6-8B60857E8074}
+	EndGlobalSection
+EndGlobal

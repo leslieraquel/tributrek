@@ -1,0 +1,81 @@
+﻿{
+   "CodeGenerationMode": 4,
+   "ContextClassName": "tributrekContext",
+   "ContextNamespace": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": true,
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": "C:\\desarrollo1\\tributrek\\tributrek.Dominio.Modelo\\Entidades",
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "tributrek.Infraestructura.AccesoDatos",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 2,
+   "SelectedToBeGenerated": 0,
+   "T4TemplatePath": null,
+   "Tables": [
+      {
+         "Name": "[dbo].[tri_actividades]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[tri_actividades_dias]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[tri_categoria]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[tri_dias_itinerario]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[tri_itinerario]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[tri_nivel]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[tri_paquete_itinerario]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[tri_rol]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[tri_usuario]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": null,
+   "UncountableWords": null,
+   "UseAsyncStoredProcedureCalls": true,
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": true,
+   "UseDatabaseNamesForRoutines": true,
+   "UseDateOnlyTimeOnly": true,
+   "UseDbContextSplitting": false,
+   "UseDecimalDataAnnotationForSprocResult": true,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": false,
+   "UseInternalAccessModifiersForSprocsAndFunctions": false,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UsePrefixNavigationNaming": false,
+   "UseSchemaFolders": false,
+   "UseSchemaNamespaces": false,
+   "UseSpatial": false,
+   "UseT4": false,
+   "UseT4Split": false
+}
