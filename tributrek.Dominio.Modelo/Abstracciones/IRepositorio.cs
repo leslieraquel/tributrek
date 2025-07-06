@@ -17,6 +17,8 @@ namespace tributrek.Dominio.Modelo.Abstracciones
         Task<IEnumerable<T>> GetAllAsync();
         Task<T> GetByAsync(int id);
 
+        Task<T> GetByIdAsync(int id);//buscar por ID
+
     }
 
 }

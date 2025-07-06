@@ -13,8 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ServicioImpl\" />
-    <Folder Include="Servicio\" />
+    <PackageReference Include="System.ServiceModel.Primitives" Version="8.1.2" />
   </ItemGroup>
 
 </Project>

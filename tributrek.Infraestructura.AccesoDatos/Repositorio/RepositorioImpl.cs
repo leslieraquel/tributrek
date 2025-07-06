@@ -12,6 +12,14 @@ namespace tributrek.Infraestructura.AccesoDatos.Repositorio
     {
         private readonly tributrekContext _dbContext;
         private readonly DbSet<T> _dbSet;
+
+        public RepositorioImpl(tributrekContext dbContext)
+        {
+            _dbContext = dbContext;
+            _dbSet = dbContext.Set<T>();
+
+        }
+
         public async Task AddAsync(T TEntity)
         {
             try
@@ -74,6 +82,18 @@ namespace tributrek.Infraestructura.AccesoDatos.Repositorio
             catch (Exception e)
             {
                 throw new Exception("Error: No se pudo eliminar los datos" + e.Message);
+            }
+        }
+
+        public async Task<T> GetByIdAsync(int id)
+        {
+            try
+            {
+                return await _dbSet.FindAsync();
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error: No se pudo buscar por id los Datos " + e.Message);
             }
         }
     }

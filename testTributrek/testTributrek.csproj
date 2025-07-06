@@ -18,6 +18,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\tributrek.Aplicacion.DTO\tributrek.Aplicacion.DTO.csproj" />
+    <ProjectReference Include="..\tributrek.Aplicacion\tributrek.Aplicacion.csproj" />
+    <ProjectReference Include="..\tributrek.Dominio.Modelo\tributrek.Dominio.Modelo.csproj" />
+    <ProjectReference Include="..\tributrek.Dominio.Servicio\tributrek.Dominio.Servicio.csproj" />
+    <ProjectReference Include="..\tributrek.Infraestructura.AccesoDatos\tributrek.Infraestructura.AccesoDatos.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Using Include="NUnit.Framework" />
   </ItemGroup>
 
