@@ -10,7 +10,6 @@ namespace tributrek.Infraestructura.AccesoDatos.Repositorio
 {
     public class CategoriaRepositorioImpl : RepositorioImpl<tri_categoria>, ICategoriaRepositorio
     {
-        private const char V = '1';
         private readonly tributrekContext _tributrekDBContext;
 
         public CategoriaRepositorioImpl(tributrekContext dbContext) : base(dbContext)

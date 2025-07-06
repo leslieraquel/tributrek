@@ -59,8 +59,8 @@ namespace testTributrek
             };
 
             await _usuarioServicio.usuarioAddAsync(usuario);
-            await _categoriaServicio.agregarCategoria(categoria);
             await _usuarioServicio.usuarioGetAllAsync();
+            await _categoriaServicio.agregarCategoria(categoria);
 
 
         }
