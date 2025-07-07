@@ -33,9 +33,11 @@ namespace tributrek.Aplicacion.ServicioImpl
             await categoriaRepositorio.DeleteAsync(tri_cat_id);
         }
 
-        public async Task<IEnumerable<tri_categoria>> listarCategorias()
+        public Task<List<tri_categoria>> listarCategorias()
         {
-            return await categoriaRepositorio.GetAllAsync();
+            return categoriaRepositorio.listarCategorias();
         }
+
+       
     }
 }

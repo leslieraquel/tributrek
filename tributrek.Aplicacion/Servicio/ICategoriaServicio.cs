@@ -22,7 +22,8 @@ namespace tributrek.Aplicacion.Servicio
 
         [OperationContract]
         Task eliminarCategoria(int tri_cat_id);
+
         [OperationContract]
-        Task<IEnumerable<tri_categoria>> listarCategorias();//listar todo
+        Task<List<tri_categoria>> listarCategorias();//listar todo
     }
 }

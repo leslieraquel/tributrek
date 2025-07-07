@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,15 +7,16 @@ using tributrek.Dominio.Modelo.Abstracciones;
 
 namespace tributrek.Infraestructura.AccesoDatos.Repositorio
 {
-    public class NivelRepositorioImpl : RepositorioImpl<tri_nivel>, INivelRepositorio
+    public class ActividadesRepositorioImpl : RepositorioImpl<tri_actividades>, IActividadesRepositorio
     {
         private readonly tributrekContext _tributrekdbContext;
-        public NivelRepositorioImpl(tributrekContext dbContext) : base(dbContext)
-        {
-            _tributrekdbContext = dbContext;
-        }
 
-        public Task<List<tri_nivel>> listarNiveles()
+        public ActividadesRepositorioImpl(tributrekContext dBContext) : base(dBContext)
+        {
+            _tributrekdbContext = dBContext;
+        }    
+
+        IEnumerable<tri_actividades> IActividadesRepositorio.buscarRolNombre(string nombre)
         {
             throw new NotImplementedException();
         }

@@ -9,5 +9,7 @@ namespace tributrek.Dominio.Modelo.Abstracciones
 {
     public interface INivelRepositorio:IRepositorio<tri_nivel>
     {
+        Task<List<tri_nivel>> listarNiveles();
+
     }
 }

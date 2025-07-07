@@ -3,39 +3,39 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using tributrek.Aplicacion.Servicio;
 using tributrek.Dominio.Modelo.Abstracciones;
 using tributrek.Infraestructura.AccesoDatos;
+using tributrek.Infraestructura.AccesoDatos.Repositorio;
 
 namespace tributrek.Aplicacion.ServicioImpl
 {
-    public class NivelServicioImpl : INivelRepositorio
+    public class NivelServicioImpl : INivelServicio
     {
-        public Task AddAsync(tri_nivel TEntity)
+        private INivelRepositorio nivelRepositorio;
+
+        public NivelServicioImpl(tributrekContext tributrekContext)
+        {
+            this.nivelRepositorio = new NivelRepositorioImpl(tributrekContext);
+        }
+
+        public Task actualizarNivel(tri_nivel Entity)
         {
             throw new NotImplementedException();
         }
 
-        public Task DeleteAsync(int id)
+        public async Task agregarNivel(tri_nivel TEntity)
+        {
+            await nivelRepositorio.AddAsync(TEntity);
+
+        }
+
+        public Task eliminarNivel(int tri_niv_id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<tri_nivel>> GetAllAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<tri_nivel> GetByAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<tri_nivel> GetByIdAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task UpdateAsync(tri_nivel TEntity)
+        public Task<List<tri_nivel>> listarNiveles()
         {
             throw new NotImplementedException();
         }

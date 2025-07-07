@@ -8,9 +8,10 @@ namespace tributrek.Aplicacion.DTO.DTOs
 {
     public class CategoriaDTO
     {
-        public string NombreCategoria { get; set; } //recuperar nombre de la categoria
+        //public string NombreCategoria { get; set; } //recuperar nombre de la categoria
 
-        public int idTipo { get; set; }
-        public List<string> NombresCategorias { get; set; }
+        public int tri_id_cat { get; set; }
+        public int tri_cat_nombre { get; set; }
+
     }
 }

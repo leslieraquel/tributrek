@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,10 +7,8 @@ using tributrek.Infraestructura.AccesoDatos;
 
 namespace tributrek.Dominio.Modelo.Abstracciones
 {
-    public interface ICategoriaRepositorio:IRepositorio<tri_categoria>
+    public interface IActividadesDiasRepositorio : IRepositorio<tri_actividades_dias>
     {
-        Task<List<tri_categoria>> listarCategorias();
-
-
+        IEnumerable<tri_actividades_dias> buscarRolNombre(String nombre);
     }
 }

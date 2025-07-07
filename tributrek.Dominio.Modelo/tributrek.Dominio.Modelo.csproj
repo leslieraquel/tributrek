@@ -11,4 +11,8 @@
     <Folder Include="ObjetoValor\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\tributrek.Aplicacion.DTO\tributrek.Aplicacion.DTO.csproj" />
+  </ItemGroup>
+
 </Project>

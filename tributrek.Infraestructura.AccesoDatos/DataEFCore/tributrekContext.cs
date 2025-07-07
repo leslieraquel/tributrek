@@ -37,7 +37,7 @@ public partial class tributrekContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Data Source=DESKTOP-RAQUEL;Initial Catalog=tributrek;Integrated Security=True;Encrypt=True;TrustServerCertificate=True");
+        => optionsBuilder.UseSqlServer("Data Source=DESKTOP-RAQUEL;Initial Catalog=tributrek;Integrated Security=True;TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -54,9 +54,7 @@ public partial class tributrekContext : DbContext
             entity.Property(e => e.tri_acti_fecha_creacion)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
-            entity.Property(e => e.tri_acti_fecha_mod)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime");
+            entity.Property(e => e.tri_acti_fecha_mod).HasColumnType("datetime");
         });
 
         modelBuilder.Entity<tri_actividades_dias>(entity =>
@@ -87,9 +85,7 @@ public partial class tributrekContext : DbContext
             entity.Property(e => e.tri_fecha_creacion)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
-            entity.Property(e => e.tri_fecha_mod)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime");
+            entity.Property(e => e.tri_fecha_mod).HasColumnType("datetime");
         });
 
         modelBuilder.Entity<tri_dias_itinerario>(entity =>
@@ -113,9 +109,7 @@ public partial class tributrekContext : DbContext
             entity.Property(e => e.tri_itine_fecha_creacion)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
-            entity.Property(e => e.tri_itine_fecha_mod)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime");
+            entity.Property(e => e.tri_itine_fecha_mod).HasColumnType("datetime");
             entity.Property(e => e.tri_itine_nombre)
                 .HasMaxLength(100)
                 .IsUnicode(false);

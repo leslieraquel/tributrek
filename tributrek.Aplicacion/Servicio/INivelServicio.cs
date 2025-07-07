@@ -12,14 +12,16 @@ namespace tributrek.Aplicacion.Servicio
     public interface INivelServicio
     {
         [OperationContract]
-
-        Task agregarNivel(tri_categoria TEntity); //Insertar
-
-        [OperationContract]
-
-        Task actualizarNivel(tri_categoria Entity);
+        Task agregarNivel(tri_nivel TEntity); //Insertar
 
         [OperationContract]
-        Task eliminarNivel(int tri_cat_id);
+
+        Task actualizarNivel(tri_nivel Entity);
+
+        [OperationContract]
+        Task eliminarNivel(int tri_niv_id);
+
+        [OperationContract]
+        Task<List<tri_nivel>> listarNiveles();//listar todo
     }
 }

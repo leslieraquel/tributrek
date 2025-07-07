@@ -10,22 +10,20 @@ namespace tributrek.Infraestructura.AccesoDatos.Repositorio
 {
     public class CategoriaRepositorioImpl : RepositorioImpl<tri_categoria>, ICategoriaRepositorio
     {
-        private readonly tributrekContext _tributrekDBContext;
-
-        public CategoriaRepositorioImpl(tributrekContext dbContext) : base(dbContext)
+        private readonly tributrekContext _tributrekdbContext;
+        public CategoriaRepositorioImpl(tributrekContext dBContext) : base(dBContext)
         {
-
-            _tributrekDBContext = dbContext;
+            _tributrekdbContext = dBContext;
         }
 
         public Task<List<tri_categoria>> listarCategorias()
         {
             try
-            {
-                //select* from tipo_producto where estado_registro = 1
-                var categorias = from cat in _tributrekDBContext.tri_categoria
-                                 select cat;
-                return categorias.ToListAsync();
+            { 
+                var resultado = from tp in _tributrekdbContext.tri_categoria
+                                where tp.tri_cat_estado.Equals('1')
+                                select tp;
+                return resultado.ToListAsync();
 
             }
             catch (Exception e)
