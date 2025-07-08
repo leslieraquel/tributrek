@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using tributrek.Aplicacion.Servicio;
 using tributrek.Aplicacion.ServicioImpl;
 using tributrek.Infraestructura.AccesoDatos;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace testTributrek
 {
@@ -41,7 +42,7 @@ namespace testTributrek
             //};
 
             //await _rolServicio.rolAddAsync(rol);
-            await _rolServicio.rolGetAllAsync();
+            //await _rolServicio.rolGetAllAsync();
 
 
             //var usuario = new tri_usuario
@@ -62,20 +63,34 @@ namespace testTributrek
             //};
             //await _categoriaServicio.agregarCategoria(categoria);
 
-            var niveles = new tri_nivel
-            {
-                tri_niv_descripcion = "Modo dificil",
-                tri_niv_dificultad="dificil"
-            };
-            await _nivelServicio.agregarNivel(niveles);
+            //var niveles = new tri_nivel
+            //{
+            //    tri_niv_descripcion = "Modo dificil",
+            //    tri_niv_dificultad="dificil"
+            //};
+            //await _nivelServicio.agregarNivel(niveles);
             //await _usuarioServicio.usuarioAddAsync(usuario);
             await _usuarioServicio.usuarioGetAllAsync();
-            var categorias = await _categoriaServicio.listarCategorias();
-
-            foreach (var cat in categorias)
+            var categorias = await _categoriaServicio.ListarCategorias();
+            var nombresCategorias = categorias.Select(r => r.tri_cat_nombre).ToList();
+            Console.WriteLine("Listado de Categorias:");
+            foreach (var cat in nombresCategorias)
             {
-                Console.WriteLine($"Id: {cat.tri_cat_id}, Nombre: {cat.tri_cat_nombre}");
+                Console.WriteLine($"- {cat}");
             }
+
+            //var usuario = await _usuarioServicio.ListarUsuarioPorRol();
+
+
+            //foreach (var usu in usuario)
+            //{
+            //    Console.WriteLine(usu.idRol + "-" + usu.NombreRol);
+            //    foreach (var item2 in usu.NombresUsuarios)
+            //    {
+            //        Console.WriteLine(item2);
+            //    }
+
+            //}
 
 
         }

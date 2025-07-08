@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using tributrek.Aplicacion.DTO.DTOs;
 using tributrek.Aplicacion.Servicio;
 using tributrek.Dominio.Modelo.Abstracciones;
 using tributrek.Infraestructura.AccesoDatos;
@@ -17,6 +18,11 @@ namespace tributrek.Aplicacion.ServicioImpl
         public UsuarioServicioImpl(tributrekContext dbContext)
         {
             this.usuarioRepositorio = new UsuarioRepositorioImpl(dbContext);
+        }
+
+        public async Task<List<UsuarioDTO>> ListarUsuarioPorRol()
+        {
+            return await usuarioRepositorio.ListarUsuarioPorRol();
         }
 
         public async Task usuarioAddAsync(tri_usuario TEntity)

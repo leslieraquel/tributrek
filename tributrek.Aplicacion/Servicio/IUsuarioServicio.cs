@@ -4,6 +4,7 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using tributrek.Aplicacion.DTO.DTOs;
 using tributrek.Infraestructura.AccesoDatos;
 
 namespace tributrek.Aplicacion.Servicio
@@ -20,6 +21,9 @@ namespace tributrek.Aplicacion.Servicio
         [OperationContract]
         Task<IEnumerable<tri_usuario>> usuarioGetAllAsync(); //listar todo
         [OperationContract]
-        Task<tri_usuario> usuarioGetByIdAsync(int id); //buscar por ID
+        Task<tri_usuario> usuarioGetByIdAsync(int id); //buscar por
+                                                       //
+        Task<List<UsuarioDTO>> ListarUsuarioPorRol();
+
     }
 }

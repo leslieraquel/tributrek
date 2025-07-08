@@ -45,7 +45,7 @@ namespace tributrek.Infraestructura.AccesoDatos.Repositorio
             catch (Exception ex)
             {
 
-                throw new Exception("Error al listar producto por tipo" + ex.Message);
+                throw new Exception("Error al listar usuarios por roles" + ex.Message);
 
             }
         }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using tributrek.Aplicacion.DTO.DTOs;
 using tributrek.Infraestructura.AccesoDatos;
 
 namespace tributrek.Aplicacion.Servicio
@@ -13,14 +14,19 @@ namespace tributrek.Aplicacion.Servicio
     {
 
         [OperationContract]
-
-        Task agregarItinerario(tri_categoria TEntity); //Insertar
-
+        Task ItinerarioAddAsync(tri_itinerario TEntity); //insertar
         [OperationContract]
-
-        Task actualizarItinerario(tri_categoria Entity);
-
+        Task ItinerarioUpdateAsync(tri_itinerario Entity); //Actualizar
         [OperationContract]
-        Task eliminarItinerario(int tri_cat_id);
+        Task ItinerarioDeleteAsync(int id); //Eliminar
+        [OperationContract]
+        Task<IEnumerable<tri_itinerario>> ItinerarioGetAllAsync(); //listar todo
+        [OperationContract]
+        Task<tri_itinerario> ItinerarioGetByIdAseync(int id); //buscar por id
+
+        Task<ItinerariosPorNivelCategoriaDTO> ListarItinerariosPorNivel();
+
+
+
     }
 }

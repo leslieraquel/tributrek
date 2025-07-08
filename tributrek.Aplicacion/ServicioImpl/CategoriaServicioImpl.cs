@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using tributrek.Aplicacion.DTO.DTOs;
 using tributrek.Aplicacion.Servicio;
 using tributrek.Dominio.Modelo.Abstracciones;
 using tributrek.Infraestructura.AccesoDatos;
@@ -18,26 +19,35 @@ namespace tributrek.Aplicacion.ServicioImpl
         {
             this.categoriaRepositorio = new CategoriaRepositorioImpl(tributrekContext);
         }
-        public async Task actualizarCategoria(tri_categoria Entity)
+
+        public Task CategoriaAddAsync(tri_categoria TEntity)
         {
-            await categoriaRepositorio.UpdateAsync(Entity);
+            throw new NotImplementedException();
         }
 
-        public async Task agregarCategoria(tri_categoria TEntity)
+        public Task CategoriaDeleteAsync(int id)
         {
-            await categoriaRepositorio.AddAsync(TEntity);
+            throw new NotImplementedException();
         }
 
-        public async Task eliminarCategoria(int tri_cat_id)
+        public Task<IEnumerable<tri_categoria>> CategoriaGetAllAsync()
         {
-            await categoriaRepositorio.DeleteAsync(tri_cat_id);
+            return categoriaRepositorio.GetAllAsync();
         }
 
-        public Task<List<tri_categoria>> listarCategorias()
+        public Task<tri_categoria> CategoriaGetByIdAseync(int id)
         {
-            return categoriaRepositorio.listarCategorias();
+            throw new NotImplementedException();
         }
 
-       
+        public Task CategoriaUpdateAsync(tri_categoria Entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<tri_categoria>> ListarCategorias()
+        {
+            return categoriaRepositorio.ListarCategorias();
+        }
     }
 }

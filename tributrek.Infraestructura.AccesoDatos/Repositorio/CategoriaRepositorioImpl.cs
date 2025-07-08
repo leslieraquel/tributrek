@@ -16,13 +16,13 @@ namespace tributrek.Infraestructura.AccesoDatos.Repositorio
             _tributrekdbContext = dBContext;
         }
 
-        public Task<List<tri_categoria>> listarCategorias()
+        public Task<List<tri_categoria>> ListarCategorias()
         {
             try
-            { 
-                var resultado = from tp in _tributrekdbContext.tri_categoria
-                                where tp.tri_cat_estado.Equals('1')
-                                select tp;
+            { //select * from tipo_producto where estado_registro=1
+                var resultado = from cat in _tributrekdbContext.tri_categoria
+                                where cat.tri_cat_estado.Equals(1)
+                                select cat;
                 return resultado.ToListAsync();
 
             }
