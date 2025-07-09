@@ -27,10 +27,7 @@ namespace ConsultaCompuesta2
             foreach (var item in result)
             {
                 Console.WriteLine(item.NombrePaquete + "-" + item.NombreCategoria);
-                foreach (var item2 in item.Itinerario)
-                {
-                    Console.WriteLine(item2);
-                }
+              
             }
             //
             //var result = rolesServicio.ListarolEmpleado();

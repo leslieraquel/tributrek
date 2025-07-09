@@ -30,20 +30,11 @@ namespace tributrek.Infraestructura.AccesoDatos.Repositorio
                                        on iti.tri_itine_id equals paq.tri_paq_idtri_itine
                                        join cat in _tributrekdbContext.tri_categoria
                                       on iti.tri_itine_cat_id equals cat.tri_cat_id
-                                       group iti by new
-                                       {
-                                           iti.tri_itine_id,
-                                           iti.tri_itine_nombre,
-                                           paq.tri_paq_nombre,
-                                           cat.tri_cat_nombre
-                                       } into grupo
-                                       select new PaqueteItinerarioCategoriaDTO
-                                       {
-                                           NombreCategoria = grupo.Key.tri_cat_nombre,
-                                           NombrePaquete = grupo.Key.tri_paq_nombre,
-                                           Itinerario = grupo.Select(tmp => tmp.tri_itine_nombre).ToList(),
+                                       select new PaqueteItinerarioCategoriaDTO{
+                                          NombrePaquete = paq.tri_paq_iti_descripcion,
+                                          NombreCategoria = cat.tri_cat_nombre
+                                           }).ToListAsync();
 
-                                       }).ToListAsync();
                     return result;
 
                 }

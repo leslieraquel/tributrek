@@ -3,7 +3,7 @@ using tributrek.Aplicacion.Servicio;
 using tributrek.Aplicacion.ServicioImpl;
 using tributrek.Infraestructura.AccesoDatos;
 
-namespace ConsultaCompuesta1
+namespace ConsultaCompuesta6
 {
     public class Tests
     {
@@ -23,10 +23,12 @@ namespace ConsultaCompuesta1
         public async Task Test1()
         {
             //await rolesServicio.RolesGetAllAsync();
-            var result = await _itinerarioServicio.ListarPorNivel();
-            foreach (var item in result)
+            var itinerarios = await _itinerarioServicio.ListarUsuarioItinerarioPaquete();
+
+            foreach (var item in itinerarios)
             {
-                Console.WriteLine("ITINERARIO:"+item.nombreItinerario + "Categoria" + item.nombreCategoria);
+                Console.WriteLine($"Paquete: {item.NombrePaquete}, Usuario: {item.NombreUsuario}, Itinerario: {item.NombreItinerario}");
+
             }
             //
             //var result = rolesServicio.ListarolEmpleado();
