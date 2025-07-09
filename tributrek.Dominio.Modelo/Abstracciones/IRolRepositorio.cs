@@ -10,5 +10,8 @@ namespace tributrek.Dominio.Modelo.Abstracciones
     public interface IRolRepositorio : IRepositorio<tri_rol>
     {
         IEnumerable<tri_rol> buscarRolNombre(String nombre);
+
+        Task<List<tri_rol>> ListarRoles();
+
     }
 }

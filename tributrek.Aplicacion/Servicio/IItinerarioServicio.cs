@@ -23,10 +23,12 @@ namespace tributrek.Aplicacion.Servicio
         Task<IEnumerable<tri_itinerario>> ItinerarioGetAllAsync(); //listar todo
         [OperationContract]
         Task<tri_itinerario> ItinerarioGetByIdAseync(int id); //buscar por id
+        
+        [OperationContract]
+        Task<List<ItinerariosPorNivelCategoriaDTO>> ListarPorNivel();
 
-        Task<ItinerariosPorNivelCategoriaDTO> ListarItinerariosPorNivel();
-
-
+        [OperationContract]
+        Task<List<UsuarioItinerarioPaqueteDTO>> ListarUsuarioItinerarioPaquete();
 
     }
 }

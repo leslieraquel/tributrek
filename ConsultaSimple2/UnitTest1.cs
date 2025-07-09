@@ -3,11 +3,11 @@ using tributrek.Aplicacion.Servicio;
 using tributrek.Aplicacion.ServicioImpl;
 using tributrek.Infraestructura.AccesoDatos;
 
-namespace ConsultaSimple
+namespace ConsultaSimple2
 {
     public class Tests
     {
-        private ICategoriaServicio _categoriaServicio;
+        private IPaqueteItinerarioServicio _PaqueteItinerarioServicio;
         private tributrekContext _tributrekdbContext;
         [SetUp]
         public void Setup()
@@ -16,23 +16,20 @@ namespace ConsultaSimple
                     .UseSqlServer("Data Source=DESKTOP-RAQUEL;Initial Catalog=tributrek;Integrated Security=True;Encrypt=True;TrustServerCertificate=True")
                     .Options;
             _tributrekdbContext = new tributrekContext(opciones);
-            _categoriaServicio = new CategoriaServicioImpl(_tributrekdbContext);
+            _PaqueteItinerarioServicio = new PaqueteItinerarioServicioImpl(_tributrekdbContext);
         }
 
         [Test]
         public async Task Test1()
         {
             //await rolesServicio.RolesGetAllAsync();
-            var result = await _categoriaServicio.CategoriaGetAllAsync();
-            var nombresCategoria = result.Select(r => r.tri_cat_nombre).ToList();
-            Console.WriteLine("Listado de categorias activos:");
-            foreach (var nombre in nombresCategoria)
+            var result = await _PaqueteItinerarioServicio.PaqueteGetAllAsync();
+            var paquetes = result.Select(r => r.tri_paq_iti_descripcion).ToList();
+            Console.WriteLine("Listado de paquetes activos:");
+            foreach (var nombre in paquetes)
             {
                 Console.WriteLine($"- {nombre}");
             }
-            //
-            //var result = rolesServicio.ListarolEmpleado();
-            //Console.WriteLine(result);
         }
 
         [TearDown]

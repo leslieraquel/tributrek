@@ -3,11 +3,11 @@ using tributrek.Aplicacion.Servicio;
 using tributrek.Aplicacion.ServicioImpl;
 using tributrek.Infraestructura.AccesoDatos;
 
-namespace ConsultaSimple
+namespace ConsultaCompuesta3
 {
     public class Tests
     {
-        private ICategoriaServicio _categoriaServicio;
+        private IActividadesServicio _actividadesServicio;
         private tributrekContext _tributrekdbContext;
         [SetUp]
         public void Setup()
@@ -16,19 +16,18 @@ namespace ConsultaSimple
                     .UseSqlServer("Data Source=DESKTOP-RAQUEL;Initial Catalog=tributrek;Integrated Security=True;Encrypt=True;TrustServerCertificate=True")
                     .Options;
             _tributrekdbContext = new tributrekContext(opciones);
-            _categoriaServicio = new CategoriaServicioImpl(_tributrekdbContext);
+            _actividadesServicio = new ActividadesServicioImpl(_tributrekdbContext);
         }
 
         [Test]
         public async Task Test1()
         {
             //await rolesServicio.RolesGetAllAsync();
-            var result = await _categoriaServicio.CategoriaGetAllAsync();
-            var nombresCategoria = result.Select(r => r.tri_cat_nombre).ToList();
-            Console.WriteLine("Listado de categorias activos:");
-            foreach (var nombre in nombresCategoria)
+            var actividades = await _actividadesServicio.ListarProductoPorTipo();
+            foreach (var item in actividades)
             {
-                Console.WriteLine($"- {nombre}");
+                Console.WriteLine($"Actividad: {item.tri_itine_nombre}, Categoría: {item.tri_cat_nombre}, Nivel: {item.tri_niv_dificultad}");
+
             }
             //
             //var result = rolesServicio.ListarolEmpleado();

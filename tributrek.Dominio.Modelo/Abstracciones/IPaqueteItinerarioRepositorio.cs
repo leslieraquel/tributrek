@@ -8,9 +8,15 @@ using tributrek.Infraestructura.AccesoDatos;
 
 namespace tributrek.Dominio.Modelo.Abstracciones
 {
-    public interface IActividadesRepositorio : IRepositorio<tri_actividades>
+    public interface IPaqueteItinerarioRepositorio
     {
-        IEnumerable<tri_actividades> buscarRolNombre(String nombre);
-        Task<List<ActividadesDTO>> ListarProductoPorTipo();
+        Task<List<tri_paquete_itinerario>> ListarPaquetes();
+
+        Task<List<PaqueteItinerarioCategoriaDTO>> ListarPaqueteItinerarioCategoria();
+
+
+
+
+
     }
 }

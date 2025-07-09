@@ -4,53 +4,55 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using tributrek.Aplicacion.DTO.DTOs;
+using tributrek.Aplicacion.Servicio;
 using tributrek.Dominio.Modelo.Abstracciones;
 using tributrek.Infraestructura.AccesoDatos;
 using tributrek.Infraestructura.AccesoDatos.Repositorio;
 
 namespace tributrek.Aplicacion.ServicioImpl
 {
-    public class ItinerarioServicioImpl : IItenarioRepositorio
+    public class ItinerarioServicioImpl: IItinerarioServicio
     {
-        private IItenarioRepositorio itinerarioRepositorio;
+        private readonly IItenarioRepositorio _iitenerarioRepositorio;
 
         public ItinerarioServicioImpl(tributrekContext tributrekContext)
         {
-            this.itinerarioRepositorio = new ItinerarioRepositorioImpl(tributrekContext);
+            this._iitenerarioRepositorio = new ItinerarioRepositorioImpl(tributrekContext);
         }
-        public Task AddAsync(tri_itinerario TEntity)
+
+        public Task ItinerarioAddAsync(tri_itinerario TEntity)
         {
             throw new NotImplementedException();
         }
 
-        public Task DeleteAsync(int id)
+        public Task ItinerarioDeleteAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<tri_itinerario>> GetAllAsync()
+        public Task<IEnumerable<tri_itinerario>> ItinerarioGetAllAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Task<tri_itinerario> GetByAsync(int id)
+        public Task<tri_itinerario> ItinerarioGetByIdAseync(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<tri_itinerario> GetByIdAsync(int id)
+        public Task ItinerarioUpdateAsync(tri_itinerario Entity)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<ItinerariosPorNivelCategoriaDTO>> ListarItinerariosPorNivel()
+        public async Task<List<ItinerariosPorNivelCategoriaDTO>> ListarPorNivel()
         {
-            return itinerarioRepositorio.ListarItinerariosPorNivel();
+           return await _iitenerarioRepositorio.ListarPorNivel();
         }
 
-        public Task UpdateAsync(tri_itinerario TEntity)
+        public Task<List<UsuarioItinerarioPaqueteDTO>> ListarUsuarioItinerarioPaquete()
         {
-            throw new NotImplementedException();
+            return _iitenerarioRepositorio.ListarUsuarioItinerarioPaquete();
         }
     }
 }

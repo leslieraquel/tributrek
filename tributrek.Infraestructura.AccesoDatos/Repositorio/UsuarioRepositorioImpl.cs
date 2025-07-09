@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,6 +46,33 @@ namespace tributrek.Infraestructura.AccesoDatos.Repositorio
             {
 
                 throw new Exception("Error al listar usuarios por roles" + ex.Message);
+
+            }
+        }
+
+        public async Task<List<UsuarioRolItinerarioDTO>> ListarUsuarioRolItinerario()
+        {
+            try
+            {
+                var resultado = await (from usu in _tributrekDBContext.tri_usuario
+                                       join rol in _tributrekDBContext.tri_rol on usu.tri_usu_id equals rol.tri_rol_id
+                                       join iti in _tributrekDBContext.tri_itinerario on usu.tri_usu_id equals iti.tri_itine_usu_id
+                                       select new UsuarioRolItinerarioDTO
+                                       {
+
+                                           NombreUsuario = usu.tri_usu_nombres,
+                                           NombreRol = rol.tri_rol_nombre,
+                                           Itinerario = iti.tri_itine_nombre
+                                       }).ToListAsync();
+
+
+
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al listar producto por tipo" + ex.Message);
 
             }
         }

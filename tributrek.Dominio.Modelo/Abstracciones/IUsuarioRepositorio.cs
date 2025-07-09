@@ -12,6 +12,9 @@ namespace tributrek.Dominio.Modelo.Abstracciones
     {
         IEnumerable<tri_rol> buscarRolNombre(String nombre);
 
-        Task<List<UsuarioDTO>> ListarUsuarioPorRol();
+        Task<List<UsuarioDTO>> ListarUsuarioPorRol(); 
+
+        Task<List<UsuarioRolItinerarioDTO>> ListarUsuarioRolItinerario(); 
+
     }
 }

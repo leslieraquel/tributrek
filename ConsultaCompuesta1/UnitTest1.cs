@@ -23,12 +23,10 @@ namespace ConsultaCompuesta1
         public async Task Test1()
         {
             //await rolesServicio.RolesGetAllAsync();
-            var result = await _categoriaServicio.CategoriaGetAllAsync();
-            var nombresCategoria = result.Select(r => r.tri_cat_id).ToList();
-            Console.WriteLine("Listado de categorias activos:");
-            foreach (var nombre in nombresCategoria)
+            var result = await _itinerarioServicio.ListarPorNivel();
+            foreach (var item in result)
             {
-                Console.WriteLine($"- {nombre}");
+                Console.WriteLine(item.nombreItinerario + "-" + item.nombreCategoria);
             }
             //
             //var result = rolesServicio.ListarolEmpleado();

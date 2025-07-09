@@ -25,6 +25,12 @@ namespace tributrek.Aplicacion.ServicioImpl
             return await usuarioRepositorio.ListarUsuarioPorRol();
         }
 
+        public async Task<List<UsuarioRolItinerarioDTO>> ListarUsuarioRolItinerario()
+        {
+            return await usuarioRepositorio.ListarUsuarioRolItinerario();
+
+        }
+
         public async Task usuarioAddAsync(tri_usuario TEntity)
         {
             await usuarioRepositorio.AddAsync(TEntity);

@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,25 +17,65 @@ namespace tributrek.Infraestructura.AccesoDatos.Repositorio
             this._tributrekContext = dbContext;
         }
 
-        public async Task<List<ItinerariosPorNivelCategoriaDTO>> ListarItinerariosPorNivel()
+        public IEnumerable<tri_itinerario> listarItinerarioPorNombre(string nombre_itinerario)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<List<ItinerariosPorNivelCategoriaDTO>> ListarPorNivel()
+        {
+
+            try
+            {
+
+                {
+                    var result = await (from iti in _tributrekContext.tri_itinerario
+                                        join cat in _tributrekContext.tri_categoria
+                                        on iti.tri_itine_cat_id equals cat.tri_cat_id
+                                        join niv in _tributrekContext.tri_nivel
+                                       on iti.tri_itine_niv_id equals niv.tri_niv_id
+                                        group iti by new
+                                        {
+                                            iti.tri_itine_nombre,
+                                            iti.tri_itine_estado,
+                                            cat.tri_cat_nombre,
+                                            niv.tri_niv_dificultad,
+                                            iti.tri_itine_id
+                                        } into grupo
+                                        select new ItinerariosPorNivelCategoriaDTO
+                                        {
+                                            nombreItinerario = grupo.Key.tri_itine_nombre,
+                                            nombreCategoria = grupo.Key.tri_cat_nombre,
+
+                                        }).ToListAsync();
+                    return result;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al listar producto por tipo" + ex.Message);
+            }
+        }
+
+        public async Task<List<UsuarioItinerarioPaqueteDTO>> ListarUsuarioItinerarioPaquete()
         {
             try
             {
-                var result = await (from iti in _tributrekContext.tri_itinerario
-                                    join cat in _tributrekContext.tri_categoria
-                                    on iti.tri_itine_id equals cat.tri_cat_id
-                                    join niv in _tributrekContext.tri_nivel
-                                   on iti.tri_itine_id equals niv.tri_niv_id
-                                   group iti by new { iti.tri_itine_nombre, iti.tri_itine_estado, cat.tri_cat_nombre , niv.tri_niv_descripcion,iti.tri_itine_id } into grupo
-                                   select new ItinerariosPorNivelCategoriaDTO
-                                   {
-                                       idTipo = grupo.Key.tri_cat_nombre,
-                                       Rp = grupo.Key.tri_itine_id,
-                                       dta = grupo.Select(tmp => tmp.tri_itine_nombre).ToList(),
+                var resultado = await (from iti in _tributrekContext.tri_itinerario
+                                       join usu in _tributrekContext.tri_usuario on iti.tri_itine_usu_id equals usu.tri_usu_id
+                                       join paq in _tributrekContext.tri_paquete_itinerario on iti.tri_itine_id equals paq.tri_paq_idtri_itine
+                                       select new UsuarioItinerarioPaqueteDTO
+                                       {
 
-                                   }).ToListAsync();
-                return result;
+                                           NombreItinerario = iti.tri_itine_nombre,
+                                           NombrePaquete = paq.tri_paq_iti_descripcion,
+                                           NombreUsuario = usu.tri_usu_nombre_usuario
+                                       }).ToListAsync();
 
+
+
+                return resultado;
             }
             catch (Exception ex)
             {

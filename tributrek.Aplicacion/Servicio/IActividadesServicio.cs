@@ -4,6 +4,7 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using tributrek.Aplicacion.DTO.DTOs;
 using tributrek.Infraestructura.AccesoDatos;
 
 namespace tributrek.Aplicacion.Servicio
@@ -21,5 +22,8 @@ namespace tributrek.Aplicacion.Servicio
         Task<IEnumerable<tri_actividades>> actividadesGetAllAsync(); //listar todo
         [OperationContract]
         Task<tri_actividades> actividadesGetByIdAsync(int id); //buscar por ID
+        [OperationContract]
+
+        Task<List<ActividadesDTO>> ListarProductoPorTipo();
     }
 }

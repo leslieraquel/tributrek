@@ -37,7 +37,7 @@ public partial class tributrekContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Data Source=DESKTOP-RAQUEL;Initial Catalog=tributrek;Integrated Security=True;TrustServerCertificate=True");
+        => optionsBuilder.UseSqlServer("Data Source=DESKTOP-RAQUEL;Initial Catalog=tributrek;Integrated Security=True;Encrypt=True;TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -151,6 +151,9 @@ public partial class tributrekContext : DbContext
             entity.Property(e => e.tri_paq_fecha_fin).HasColumnType("datetime");
             entity.Property(e => e.tri_paq_fecha_inicio).HasColumnType("datetime");
             entity.Property(e => e.tri_paq_iti_descripcion).HasColumnType("text");
+            entity.Property(e => e.tri_paq_nombre)
+                .HasMaxLength(20)
+                .IsUnicode(false);
 
             entity.HasOne(d => d.tri_paq_idtri_itineNavigation).WithMany(p => p.tri_paquete_itinerario)
                 .HasForeignKey(d => d.tri_paq_idtri_itine)

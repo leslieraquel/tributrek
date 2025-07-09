@@ -19,6 +19,8 @@ public partial class tri_paquete_itinerario
 
     public DateTime? tri_paq_fecha_fin { get; set; }
 
+    public string tri_paq_nombre { get; set; }
+
     public virtual ICollection<tri_dias_itinerario> tri_dias_itinerario { get; set; } = new List<tri_dias_itinerario>();
 
     public virtual tri_itinerario tri_paq_idtri_itineNavigation { get; set; }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using tributrek.Aplicacion.DTO.DTOs;
 using tributrek.Aplicacion.Servicio;
 using tributrek.Dominio.Modelo.Abstracciones;
 using tributrek.Infraestructura.AccesoDatos;
@@ -41,6 +42,11 @@ namespace tributrek.Aplicacion.ServicioImpl
         public Task<tri_actividades> actividadesGetByIdAsync(int id)
         {
             return actividadesRepositorio.GetByIdAsync(id);
+        }
+
+        public Task<List<ActividadesDTO>> ListarProductoPorTipo()
+        {
+            return actividadesRepositorio.ListarProductoPorTipo();
         }
     }
 }

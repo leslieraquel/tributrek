@@ -22,8 +22,10 @@ namespace tributrek.Aplicacion.Servicio
         Task<IEnumerable<tri_usuario>> usuarioGetAllAsync(); //listar todo
         [OperationContract]
         Task<tri_usuario> usuarioGetByIdAsync(int id); //buscar por
-                                                       //
+        [OperationContract]
         Task<List<UsuarioDTO>> ListarUsuarioPorRol();
 
+        [OperationContract]
+        Task<List<UsuarioRolItinerarioDTO>> ListarUsuarioRolItinerario();
     }
 }
