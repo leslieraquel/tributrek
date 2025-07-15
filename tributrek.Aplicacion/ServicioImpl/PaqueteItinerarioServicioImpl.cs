@@ -14,10 +14,14 @@ namespace tributrek.Aplicacion.ServicioImpl
     public class PaqueteItinerarioServicioImpl : IPaqueteItinerarioServicio
     {
         private readonly IPaqueteItinerarioRepositorio _ipaqueteitenerarioRepositorio;
+        private readonly tributrekContext _context;
+
 
         public PaqueteItinerarioServicioImpl(tributrekContext tributrekContext)
         {
-            this._ipaqueteitenerarioRepositorio = new PaqueteItinerarioRepositorioImpl(tributrekContext);
+            _context = tributrekContext;
+            _ipaqueteitenerarioRepositorio = new PaqueteItinerarioRepositorioImpl(_context);
+
         }
 
         public Task<List<PaqueteItinerarioCategoriaDTO>> ListarPaqueteItinerarioCategoria()

@@ -13,9 +13,9 @@ namespace tributrek.Aplicacion.Servicio
     public interface IActividadesServicio
     {
         [OperationContract]
-        Task actiidadesAddAsync(tri_actividades TEntity); //insertar
+        Task actividadesAddAsync(tri_actividades TEntity); //insertar
         [OperationContract]
-        Task activadadesUpdateAsync(tri_actividades Entity); //actualizar
+        Task actividadesUpdateAsync(tri_actividades Entity); //actualizar
         [OperationContract]
         Task actividadesDeleteAsync(int id); //eliminar por ID
         [OperationContract]

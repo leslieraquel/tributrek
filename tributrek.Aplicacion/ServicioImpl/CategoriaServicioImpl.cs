@@ -14,10 +14,13 @@ namespace tributrek.Aplicacion.ServicioImpl
     public class CategoriaServicioImpl : ICategoriaServicio
     {
         private ICategoriaRepositorio categoriaRepositorio;
+        private readonly tributrekContext _context;
+
 
         public CategoriaServicioImpl(tributrekContext tributrekContext)
         {
-            this.categoriaRepositorio = new CategoriaRepositorioImpl(tributrekContext);
+            _context = tributrekContext;
+            categoriaRepositorio = new CategoriaRepositorioImpl(_context);
         }
 
         public Task CategoriaAddAsync(tri_categoria TEntity)

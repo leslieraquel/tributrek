@@ -14,10 +14,13 @@ namespace tributrek.Aplicacion.ServicioImpl
     public class ItinerarioServicioImpl: IItinerarioServicio
     {
         private readonly IItenarioRepositorio _iitenerarioRepositorio;
+        private readonly tributrekContext _context;
+
 
         public ItinerarioServicioImpl(tributrekContext tributrekContext)
         {
-            this._iitenerarioRepositorio = new ItinerarioRepositorioImpl(tributrekContext);
+            _context = tributrekContext;
+            _iitenerarioRepositorio = new ItinerarioRepositorioImpl(_context);
         }
 
         public Task ItinerarioAddAsync(tri_itinerario TEntity)

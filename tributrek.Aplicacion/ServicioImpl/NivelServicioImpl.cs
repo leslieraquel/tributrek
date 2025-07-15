@@ -13,10 +13,13 @@ namespace tributrek.Aplicacion.ServicioImpl
     public class NivelServicioImpl : INivelServicio
     {
         private INivelRepositorio nivelRepositorio;
+        private readonly tributrekContext _context;
+
 
         public NivelServicioImpl(tributrekContext tributrekContext)
         {
-            this.nivelRepositorio = new NivelRepositorioImpl(tributrekContext);
+            _context = tributrekContext;
+            nivelRepositorio = new NivelRepositorioImpl(_context);
         }
 
         public Task actualizarNivel(tri_nivel Entity)

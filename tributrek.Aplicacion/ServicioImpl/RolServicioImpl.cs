@@ -13,10 +13,12 @@ namespace tributrek.Aplicacion.ServicioImpl
     public class RolServicioImpl : IRolServicio
     {
         private IRolRepositorio rolRepositorio;
+        private readonly tributrekContext _context;
 
-        public RolServicioImpl(tributrekContext dbContext)
+        public RolServicioImpl(tributrekContext tributrekContext)
         {
-            this.rolRepositorio = new RolRepositorioImpl(dbContext);
+            _context = tributrekContext;
+            rolRepositorio = new RolRepositorioImpl(_context);
         }
 
         public async Task rolAddAsync(tri_rol TEntity)

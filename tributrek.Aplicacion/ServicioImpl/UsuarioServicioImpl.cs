@@ -16,9 +16,9 @@ namespace tributrek.Aplicacion.ServicioImpl
         private readonly IUsuarioRepositorio usuarioRepositorio;
         private readonly tributrekContext _context;
 
-        public UsuarioServicioImpl(tributrekContext dbContext)
+        public UsuarioServicioImpl(tributrekContext tributrekContext)
         {
-            _context = dbContext;
+            _context = tributrekContext;
             usuarioRepositorio = new UsuarioRepositorioImpl(_context);
         }
 

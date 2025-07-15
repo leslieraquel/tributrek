@@ -7,27 +7,27 @@ namespace tributrek.Controllers
     [ApiController]
 
     [Route("api/tributrek/[controller]")]
-    public class ItinerarioController : Controller
+    public class NivelController: Controller
     {
+        private INivelServicio _nivelServicio;
 
-        private IItinerarioServicio _itinerarioServicio;
-
-        public ItinerarioController(IItinerarioServicio itinerarioServicio)
+        public NivelController(INivelServicio nivelServicio)
         {
-            _itinerarioServicio = itinerarioServicio;
-        }
-        [HttpGet("ListarItinerario")]
-        public async  Task<IEnumerable<tri_itinerario>> ListarItinerario()
-        {
-            return  await _itinerarioServicio.ItinerarioGetAllAsync();
+            _nivelServicio = nivelServicio;
         }
 
-        [HttpPost("CrearItinerario")]
-        public async Task<IActionResult> CrearNivel([FromBody] tri_itinerario nuevoitinerario)
+        [HttpGet("ListarNiveles")]
+        public async Task<List<tri_nivel>> ListarNivel()
+        {
+            return await _nivelServicio.listarNiveles();
+        }
+
+        [HttpPost("CrearNivel")]
+        public async Task<IActionResult> CrearNivel([FromBody] tri_nivel nuevonivel)
         {
             try
             {
-                await _itinerarioServicio.ItinerarioAddAsync(nuevoitinerario);
+                await _nivelServicio.agregarNivel(nuevonivel);
                 return Ok();
             }
             catch (Exception ex)
@@ -39,32 +39,32 @@ namespace tributrek.Controllers
 
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> ActualizarItinerario(int id, [FromBody] tri_itinerario itinerarioActualizado)
+        public async Task<IActionResult> ActualizarNivel(int id, [FromBody] tri_nivel nivelActualizado)
 
         {
-            if (id != itinerarioActualizado.tri_itine_id) // Asegúrate que usas el campo correcto como ID
+            if (id != nivelActualizado.tri_niv_id) // Asegúrate que usas el campo correcto como ID
             {
                 return BadRequest("El ID de la URL no coincide con el del cuerpo.");
             }
 
             try
             {
-                await _itinerarioServicio.ItinerarioUpdateAsync(itinerarioActualizado);
+                await _nivelServicio.actualizarNivel(nivelActualizado);
                 return Ok();
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error al actualizar itinerario: {ex.Message}");
+                Console.WriteLine($"Error al actualizar paquete: {ex.Message}");
                 return StatusCode(500, "Error interno del servidor");
             }
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> EliminarItinerario(int id)
+        public async Task<IActionResult> EliminarPaquete(int id)
         {
             try
             {
-                await _itinerarioServicio.ItinerarioDeleteAsync(id);
+                await _nivelServicio.eliminarNivel(id);
                 return Ok();
             }
             catch (Exception ex)

@@ -1,7 +1,6 @@
-﻿using tributrek.Aplicacion.Servicio;
-using tributrek.Aplicacion.ServicioImpl;
+﻿using Microsoft.AspNetCore.Mvc;
+using tributrek.Aplicacion.Servicio;
 using tributrek.Infraestructura.AccesoDatos;
-using Microsoft.AspNetCore.Mvc;
 
 namespace tributrek.Controllers
 {
@@ -9,26 +8,27 @@ namespace tributrek.Controllers
     [ApiController]
 
     [Route("api/tributrek/[controller]")]
-    public class UsuarioController: Controller
+    public class RolController: Controller
     {
-        private IUsuarioServicio _usuarioServicio;  
+        private IRolServicio _rolServicio;
 
-        public UsuarioController(IUsuarioServicio usuarioServicio)
+        public RolController(IRolServicio rolServicio)
         {
-            _usuarioServicio = usuarioServicio;
+            _rolServicio = rolServicio;
         }
 
         [HttpGet]
-           public Task<IEnumerable<tri_usuario>> usuarioGetAllAsync() {
-             return _usuarioServicio.usuarioGetAllAsync();
-           }
+        public Task<IEnumerable<tri_rol>> rolGetAllAsync()
+        {
+            return _rolServicio.rolGetAllAsync();
+        }
 
-        [HttpPost("CrearUsuario")]
-        public async Task<IActionResult> CrearUsuario([FromBody] tri_usuario nuevousuario)
+        [HttpPost("CrearRol")]
+        public async Task<IActionResult> CrearRol([FromBody] tri_rol nuevorol)
         {
             try
             {
-                await _usuarioServicio.usuarioAddAsync(nuevousuario);
+                await _rolServicio.rolAddAsync(nuevorol);
                 return Ok();
             }
             catch (Exception ex)
@@ -38,19 +38,19 @@ namespace tributrek.Controllers
             }
         }
 
-     
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> ActualizarUsuario(int id, [FromBody] tri_usuario usuarioActualizado)
+        public async Task<IActionResult> ActualizarRol(int id, [FromBody] tri_rol rolActualizado)
+
         {
-            if (id != usuarioActualizado.tri_usu_id) // Asegúrate que usas el campo correcto como ID
+            if (id != rolActualizado.tri_rol_id) // Asegúrate que usas el campo correcto como ID
             {
                 return BadRequest("El ID de la URL no coincide con el del cuerpo.");
             }
 
             try
             {
-                await _usuarioServicio.usuarioUpdateAsync(usuarioActualizado);
+                await _rolServicio.rolUpdateAsync(rolActualizado);
                 return Ok();
             }
             catch (Exception ex)
@@ -61,11 +61,11 @@ namespace tributrek.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> EliminarUsuario(int id)
+        public async Task<IActionResult> EliminarRol(int id)
         {
             try
             {
-                await _usuarioServicio.usuarioDeleteAsync(id);
+                await _rolServicio.rolDeleteAsync(id);
                 return Ok();
             }
             catch (Exception ex)
@@ -74,8 +74,5 @@ namespace tributrek.Controllers
                 return StatusCode(500, "Error interno del servidor");
             }
         }
-
-
-
     }
 }

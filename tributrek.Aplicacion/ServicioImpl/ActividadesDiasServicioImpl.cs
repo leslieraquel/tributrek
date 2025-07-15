@@ -13,9 +13,12 @@ namespace tributrek.Aplicacion.ServicioImpl
     public class ActividadesDiasServicioImpl : IActividadesDiasServicio
     {
         private IActividadesDiasRepositorio actividadesDiasRepositorio;
-        public ActividadesDiasServicioImpl(tributrekContext dbContext)
+        private readonly tributrekContext _context;
+
+        public ActividadesDiasServicioImpl(tributrekContext tributrekContext)
         {
-            this.actividadesDiasRepositorio = new ActividadesDiasRepositorioImpl (dbContext);
+            _context = tributrekContext;
+            actividadesDiasRepositorio = new ActividadesDiasRepositorioImpl (_context);
         }
 
         public async Task actividadesdiasAddAsync(tri_actividades_dias TEntity)

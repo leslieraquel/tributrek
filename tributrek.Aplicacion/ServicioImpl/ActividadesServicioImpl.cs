@@ -14,17 +14,21 @@ namespace tributrek.Aplicacion.ServicioImpl
     public class ActividadesServicioImpl : IActividadesServicio
     {
         private IActividadesRepositorio actividadesRepositorio;
-        public ActividadesServicioImpl(tributrekContext dbContext)
+        private readonly tributrekContext _context;
+
+        public ActividadesServicioImpl(tributrekContext tributrekContext)
         {
-            this.actividadesRepositorio = new ActividadesRepositorioImpl(dbContext);
+            _context = tributrekContext;
+
+            actividadesRepositorio = new ActividadesRepositorioImpl(_context);
         }
 
-        public async Task actiidadesAddAsync(tri_actividades TEntity)
+        public async Task actividadesAddAsync(tri_actividades TEntity)
         {
             await actividadesRepositorio.AddAsync(TEntity);
         }
 
-        public async Task activadadesUpdateAsync(tri_actividades Entity)
+        public async Task actividadesUpdateAsync(tri_actividades Entity)
         {
             await actividadesRepositorio.UpdateAsync(Entity);
         }
