@@ -13,11 +13,13 @@ namespace tributrek.Aplicacion.ServicioImpl
 {
     public class UsuarioServicioImpl : IUsuarioServicio
     {
-        private IUsuarioRepositorio usuarioRepositorio;
+        private readonly IUsuarioRepositorio usuarioRepositorio;
+        private readonly tributrekContext _context;
 
         public UsuarioServicioImpl(tributrekContext dbContext)
         {
-            this.usuarioRepositorio = new UsuarioRepositorioImpl(dbContext);
+            _context = dbContext;
+            usuarioRepositorio = new UsuarioRepositorioImpl(_context);
         }
 
         public async Task<List<UsuarioDTO>> ListarUsuarioPorRol()
