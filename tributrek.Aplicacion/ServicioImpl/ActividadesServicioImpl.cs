@@ -48,9 +48,9 @@ namespace tributrek.Aplicacion.ServicioImpl
             return actividadesRepositorio.GetByIdAsync(id);
         }
 
-        public Task<List<ActividadesDTO>> ListarProductoPorTipo()
+        public Task<List<ActividadesDTO>> ListarActividades()
         {
-            return actividadesRepositorio.ListarProductoPorTipo();
+            return actividadesRepositorio.ListarActividades();
         }
     }
 }

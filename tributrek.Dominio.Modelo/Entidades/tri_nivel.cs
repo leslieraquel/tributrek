@@ -2,6 +2,7 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace tributrek.Infraestructura.AccesoDatos;
 
@@ -15,5 +16,6 @@ public partial class tri_nivel
 
     public string tri_niv_descripcion { get; set; }
 
+    [JsonIgnore]
     public virtual ICollection<tri_itinerario> tri_itinerario { get; set; } = new List<tri_itinerario>();
 }

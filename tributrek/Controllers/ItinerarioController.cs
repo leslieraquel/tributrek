@@ -17,14 +17,24 @@ namespace tributrek.Controllers
             _itinerarioServicio = itinerarioServicio;
         }
         [HttpGet("ListarItinerario")]
-        public async  Task<IEnumerable<tri_itinerario>> ListarItinerario()
+        public async Task<IActionResult> ListarItinerario()
         {
-            return  await _itinerarioServicio.ItinerarioGetAllAsync();
+            try
+            {
+                var categorias = await _itinerarioServicio.listarItinerario();
+                return Ok(categorias);
+            }
+            catch (Exception ex)
+            {
+                // Log el error si es necesario
+                return StatusCode(500, $"Error al obtener categorías: {ex.Message}");
+            }
         }
 
         [HttpPost("CrearItinerario")]
-        public async Task<IActionResult> CrearNivel([FromBody] tri_itinerario nuevoitinerario)
+        public async Task<IActionResult> CrearItinerario([FromBody] tri_itinerario nuevoitinerario)
         {
+          
             try
             {
                 await _itinerarioServicio.ItinerarioAddAsync(nuevoitinerario);
@@ -38,7 +48,7 @@ namespace tributrek.Controllers
         }
 
 
-        [HttpPut("{id}")]
+        [HttpPut("ActualizarItinerario/{id}")]
         public async Task<IActionResult> ActualizarItinerario(int id, [FromBody] tri_itinerario itinerarioActualizado)
 
         {

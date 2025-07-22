@@ -17,6 +17,68 @@ namespace tributrek.Infraestructura.AccesoDatos.Repositorio
             this._tributrekContext = dbContext;
         }
 
+        public async Task ActualizarItinerarioAsync(tri_itinerario idItinerario)
+        {
+            try
+            {
+                _tributrekContext.tri_itinerario.Update(idItinerario); // Agrega el objeto al contexto
+                await _tributrekContext.SaveChangesAsync();       // Guarda los cambios en la BD
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al agregar el itinerario: " + ex.Message);
+            }
+        }
+
+        public async Task AgregarItinerarioAsync(tri_itinerario itinerario)
+        {
+            try
+            {
+                _tributrekContext.tri_itinerario.Add(itinerario); // Agrega el objeto al contexto
+                await _tributrekContext.SaveChangesAsync();       // Guarda los cambios en la BD
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al agregar el itinerario: " + ex.Message);
+            }
+        }
+
+        public async  Task<List<ItinerarioDTO>> ListarItinerario()
+        {
+            try
+            {
+
+                {
+                    var result = await (
+                        from iti in _tributrekContext.tri_itinerario
+                        join cat in _tributrekContext.tri_categoria
+                            on iti.tri_itine_cat_id equals cat.tri_cat_id
+                        join niv in _tributrekContext.tri_nivel
+                            on iti.tri_itine_niv_id equals niv.tri_niv_id
+                        select new ItinerarioDTO
+                        {
+                            idItinerario = iti.tri_itine_id,
+                            NombreItinerario = iti.tri_itine_nombre,
+                            EstadoItinerario = iti.tri_itine_estado,
+                            nombreCategoria = cat.tri_cat_nombre,
+                            descripcionNivel = niv.tri_niv_descripcion,
+                            idCategoria = cat.tri_cat_id,
+                            idNivel = niv.tri_niv_id
+                        }
+                        
+                    ).ToListAsync();
+
+                    return result;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al listar itinerario" + ex.Message);
+            }
+
+        }
+
         public IEnumerable<tri_itinerario> listarItinerarioPorNombre(string nombre_itinerario)
         {
             throw new NotImplementedException();

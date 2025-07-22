@@ -1,7 +1,9 @@
-﻿using tributrek.Aplicacion.Servicio;
+﻿using Microsoft.AspNetCore.Mvc;
+using tributrek.Aplicacion.DTO.DTOs;
+using tributrek.Aplicacion.Servicio;
 using tributrek.Aplicacion.ServicioImpl;
 using tributrek.Infraestructura.AccesoDatos;
-using Microsoft.AspNetCore.Mvc;
+using tributrek.Utilidades;
 
 namespace tributrek.Controllers
 {
@@ -11,11 +13,13 @@ namespace tributrek.Controllers
     [Route("api/tributrek/[controller]")]
     public class UsuarioController: Controller
     {
-        private IUsuarioServicio _usuarioServicio;  
+        private IUsuarioServicio _usuarioServicio;
+        private readonly IConfiguration _configuration;
 
-        public UsuarioController(IUsuarioServicio usuarioServicio)
+        public UsuarioController(IUsuarioServicio usuarioServicio, IConfiguration configuration)
         {
             _usuarioServicio = usuarioServicio;
+            _configuration = configuration;
         }
 
         [HttpGet]
@@ -71,6 +75,31 @@ namespace tributrek.Controllers
             catch (Exception ex)
             {
                 Console.WriteLine($"Error al eliminar usuario: {ex.Message}");
+                return StatusCode(500, "Error interno del servidor");
+            }
+        }
+
+        [HttpPost("autenticar")]
+        public async Task<IActionResult> AutenticarAsync([FromBody] LoginDTO login)
+        {
+            try
+            {
+                var usuario = await _usuarioServicio.AutenticarAsync(login.nombreUsuario, login.claveUsuario);
+
+                if (usuario == null)
+                    return Unauthorized("Credenciales inválidas");
+
+                // Obtener valores de configuración
+                string secretKey = _configuration["Jwt:SecretKey"];
+                int expireMinutes = int.Parse(_configuration["Jwt:ExpireMinutes"]);
+
+                string token = JwtHelper.GenerarToken(login.nombreUsuario, secretKey, expireMinutes);
+
+                return Ok(new { token });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error en login: {ex.Message}");
                 return StatusCode(500, "Error interno del servidor");
             }
         }

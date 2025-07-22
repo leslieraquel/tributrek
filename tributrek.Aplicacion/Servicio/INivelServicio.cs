@@ -4,6 +4,7 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using tributrek.Aplicacion.DTO.DTOs;
 using tributrek.Infraestructura.AccesoDatos;
 
 namespace tributrek.Aplicacion.Servicio
@@ -22,6 +23,6 @@ namespace tributrek.Aplicacion.Servicio
         Task eliminarNivel(int tri_niv_id);
 
         [OperationContract]
-        Task<List<tri_nivel>> listarNiveles();//listar todo
+        Task<List<NivelDTO>> listarNiveles();//listar todo
     }
 }

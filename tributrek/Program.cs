@@ -2,6 +2,7 @@ using tributrek.Aplicacion.Servicio;
 using tributrek.Aplicacion.ServicioImpl;
 using tributrek.Infraestructura.AccesoDatos;
 using Microsoft.EntityFrameworkCore;
+using tributrek.Dominio.Modelo.Abstracciones;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,7 +25,32 @@ builder.Services.AddDbContext<tributrekContext>(options =>
 //configurar servicios
 builder.Services.AddScoped<IUsuarioServicio, UsuarioServicioImpl>();
 
+builder.Services.AddScoped<IItinerarioServicio, ItinerarioServicioImpl>();
+
+builder.Services.AddScoped<ICategoriaServicio, CategoriaServicioImpl>();
+
+builder.Services.AddScoped<INivelServicio, NivelServicioImpl>();
+
+builder.Services.AddScoped<IActividadesServicio, ActividadesServicioImpl>();
+
+
+
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngularApp", policy =>
+    {
+        policy.WithOrigins("http://localhost:4200")
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
 var app = builder.Build();
+
+
+
+app.UseCors("AllowAngularApp");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

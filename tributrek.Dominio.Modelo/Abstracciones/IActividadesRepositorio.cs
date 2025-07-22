@@ -11,6 +11,8 @@ namespace tributrek.Dominio.Modelo.Abstracciones
     public interface IActividadesRepositorio : IRepositorio<tri_actividades>
     {
         IEnumerable<tri_actividades> buscarRolNombre(String nombre);
-        Task<List<ActividadesDTO>> ListarProductoPorTipo();
+        Task<List<ActividadesDTO>> ListarActividades();
+
+
     }
 }

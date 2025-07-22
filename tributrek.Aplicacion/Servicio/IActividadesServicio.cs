@@ -24,6 +24,6 @@ namespace tributrek.Aplicacion.Servicio
         Task<tri_actividades> actividadesGetByIdAsync(int id); //buscar por ID
         [OperationContract]
 
-        Task<List<ActividadesDTO>> ListarProductoPorTipo();
+        Task<List<ActividadesDTO>> ListarActividades();
     }
 }

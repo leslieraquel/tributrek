@@ -15,5 +15,13 @@ namespace tributrek.Dominio.Modelo.Abstracciones
         Task<List<ItinerariosPorNivelCategoriaDTO>> ListarPorNivel();
 
         Task<List<UsuarioItinerarioPaqueteDTO>> ListarUsuarioItinerarioPaquete();
+
+        Task<List<ItinerarioDTO>> ListarItinerario();
+
+        Task AgregarItinerarioAsync(tri_itinerario itinerario);
+
+        Task ActualizarItinerarioAsync(tri_itinerario idItinerario);
+
+
     }
 }

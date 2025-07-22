@@ -16,10 +16,20 @@ namespace tributrek.Controllers
             _nivelServicio = nivelServicio;
         }
 
-        [HttpGet("ListarNiveles")]
-        public async Task<List<tri_nivel>> ListarNivel()
+        [HttpGet("ListarNivel")]
+        public async Task<IActionResult> listarNiveles()
         {
-            return await _nivelServicio.listarNiveles();
+            try
+            {
+                var nivel = await _nivelServicio.listarNiveles();
+                return Ok(nivel);
+            }
+            catch (Exception ex)
+            {
+                // Log el error si es necesario
+                return StatusCode(500, $"Error al obtener niveles" +
+                    $": {ex.Message}");
+            }
         }
 
         [HttpPost("CrearNivel")]

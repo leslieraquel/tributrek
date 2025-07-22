@@ -2,6 +2,7 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace tributrek.Infraestructura.AccesoDatos;
 
@@ -12,6 +13,8 @@ public partial class tri_rol
     public string tri_rol_nombre { get; set; }
 
     public string tri_rol_estado { get; set; }
+
+    [JsonIgnore]
 
     public virtual ICollection<tri_usuario> tri_usuario { get; set; } = new List<tri_usuario>();
 }

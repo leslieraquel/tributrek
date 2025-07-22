@@ -76,5 +76,26 @@ namespace tributrek.Infraestructura.AccesoDatos.Repositorio
 
             }
         }
+
+        public async Task<List<LoginDTO>> AutenticarAsync(string nombre, string clave)
+        {
+            try
+            {
+                var resultado = await _tributrekDBContext.tri_usuario
+                    .Where(u => u.tri_usu_nombre_usuario == nombre && u.tri_usu_clave == clave)
+                    .Select(u => new LoginDTO
+                    {
+                        nombreUsuario = u.tri_usu_nombre_usuario,
+                        claveUsuario = u.tri_usu_clave
+                    })
+                    .ToListAsync();
+
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al autenticar: " + ex.Message);
+            }
+        }
     }
 }

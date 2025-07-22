@@ -2,6 +2,7 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace tributrek.Infraestructura.AccesoDatos;
 
@@ -25,7 +26,10 @@ public partial class tri_usuario
 
     public int? tri_usu_rol_id { get; set; }
 
+
+
+    [JsonIgnore]
+    public virtual tri_rol tri_usu_rol { get; set; }
     public virtual ICollection<tri_itinerario> tri_itinerario { get; set; } = new List<tri_itinerario>();
 
-    public virtual tri_rol tri_usu_rol { get; set; }
 }

@@ -26,7 +26,7 @@ namespace tributrek.Aplicacion.Servicio
         Task<tri_categoria> CategoriaGetByIdAseync(int id); //buscar por id
 
         [OperationContract]
-        Task<List<tri_categoria>> ListarCategorias();
+        Task<List<CategoriaDTO>> ListarCategorias();
 
 
 

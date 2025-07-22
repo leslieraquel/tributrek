@@ -27,5 +27,8 @@ namespace tributrek.Aplicacion.Servicio
 
         [OperationContract]
         Task<List<UsuarioRolItinerarioDTO>> ListarUsuarioRolItinerario();
+
+        [OperationContract]
+        Task<LoginDTO> AutenticarAsync(string nombre, string clave);
     }
 }

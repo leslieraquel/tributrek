@@ -23,9 +23,10 @@ namespace tributrek.Aplicacion.ServicioImpl
             _iitenerarioRepositorio = new ItinerarioRepositorioImpl(_context);
         }
 
-        public Task ItinerarioAddAsync(tri_itinerario TEntity)
+        public async Task ItinerarioAddAsync(tri_itinerario TEntity)
         {
-            throw new NotImplementedException();
+            await _iitenerarioRepositorio.AddAsync(TEntity);
+
         }
 
         public Task ItinerarioDeleteAsync(int id)
@@ -43,10 +44,18 @@ namespace tributrek.Aplicacion.ServicioImpl
             throw new NotImplementedException();
         }
 
-        public Task ItinerarioUpdateAsync(tri_itinerario Entity)
+        public async Task ItinerarioUpdateAsync(tri_itinerario TEntity)
         {
-            throw new NotImplementedException();
+            await _iitenerarioRepositorio.UpdateAsync(TEntity);
+
         }
+
+        public async Task<List<ItinerarioDTO>> listarItinerario()
+        {
+            return await _iitenerarioRepositorio.ListarItinerario();
+        }
+
+    
 
         public async Task<List<ItinerariosPorNivelCategoriaDTO>> ListarPorNivel()
         {

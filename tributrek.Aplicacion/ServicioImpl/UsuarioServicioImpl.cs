@@ -22,6 +22,13 @@ namespace tributrek.Aplicacion.ServicioImpl
             usuarioRepositorio = new UsuarioRepositorioImpl(_context);
         }
 
+        public async Task<LoginDTO> AutenticarAsync(string nombre, string clave)
+        {
+            var resultado = await usuarioRepositorio.AutenticarAsync(nombre, clave);
+            return resultado.FirstOrDefault();
+
+        }
+
         public async Task<List<UsuarioDTO>> ListarUsuarioPorRol()
         {
             return await usuarioRepositorio.ListarUsuarioPorRol();

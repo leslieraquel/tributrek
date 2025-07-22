@@ -19,9 +19,18 @@ namespace tributrek.Controllers
 
 
         [HttpGet("ListarCategoria")]
-        public async Task<IEnumerable<tri_categoria>> ListarItinerario()
+        public async Task<IActionResult> ListarCategorias()
         {
-            return await _categoriaServicio.CategoriaGetAllAsync();
+            try
+            {
+                var categorias = await _categoriaServicio.ListarCategorias();
+                return Ok(categorias);
+            }
+            catch (Exception ex)
+            {
+                // Log el error si es necesario
+                return StatusCode(500, $"Error al obtener categorías: {ex.Message}");
+            }
         }
 
         [HttpPost("CrearCategoria")]

@@ -2,6 +2,7 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace tributrek.Infraestructura.AccesoDatos;
 
@@ -20,6 +21,8 @@ public partial class tri_paquete_itinerario
     public DateTime? tri_paq_fecha_fin { get; set; }
 
     public string tri_paq_nombre { get; set; }
+
+    [JsonIgnore]
 
     public virtual ICollection<tri_dias_itinerario> tri_dias_itinerario { get; set; } = new List<tri_dias_itinerario>();
 

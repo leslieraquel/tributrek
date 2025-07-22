@@ -11,7 +11,7 @@ namespace tributrek.Aplicacion.DTO.DTOs
         //public string NombreCategoria { get; set; } //recuperar nombre de la categoria
 
         public int tri_id_cat { get; set; }
-        public int tri_cat_nombre { get; set; }
+        public string tri_cat_nombre { get; set; }
 
     }
 }

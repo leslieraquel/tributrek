@@ -48,9 +48,10 @@ namespace tributrek.Aplicacion.ServicioImpl
             throw new NotImplementedException();
         }
 
-        public Task<List<tri_categoria>> ListarCategorias()
+        public async Task<List<CategoriaDTO>> ListarCategorias()
         {
-            return categoriaRepositorio.ListarCategorias();
+            return await categoriaRepositorio.ListarCategorias();
         }
+
     }
 }
