@@ -17,6 +17,35 @@ namespace tributrek.Infraestructura.AccesoDatos.Repositorio
             this._tributrekContext = dBContext;
         }
 
+        public async Task<List<NivelListarDTO>> listarNivel()
+        {
+            try
+            {
+
+                {
+                    var result = await(
+                        from niv in _tributrekContext.tri_nivel
+                        select new NivelListarDTO
+                        {
+                               tri_niv_descripcion = niv.tri_niv_descripcion,
+                               tri_niv_dificultad = niv.tri_niv_dificultad,
+                               tri_niv_id = niv.tri_niv_id,
+                               tri_niv_estado = niv.tri_niv_estado,
+                               
+
+                        }
+
+                    ).ToListAsync();
+
+                    return result;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al listar nivel" + ex.Message);
+            }
+        }
 
         public async Task<List<NivelDTO>> listarNiveles()
         {

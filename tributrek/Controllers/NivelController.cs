@@ -17,18 +17,17 @@ namespace tributrek.Controllers
         }
 
         [HttpGet("ListarNivel")]
-        public async Task<IActionResult> listarNiveles()
+        public async Task<IActionResult> ListarNivel()
         {
             try
             {
-                var nivel = await _nivelServicio.listarNiveles();
-                return Ok(nivel);
+                var categorias = await _nivelServicio.listarNivel();
+                return Ok(categorias);
             }
             catch (Exception ex)
             {
                 // Log el error si es necesario
-                return StatusCode(500, $"Error al obtener niveles" +
-                    $": {ex.Message}");
+                return StatusCode(500, $"Error al obtener nivel: {ex.Message}");
             }
         }
 
@@ -48,6 +47,7 @@ namespace tributrek.Controllers
         }
 
 
+
         [HttpPut("{id}")]
         public async Task<IActionResult> ActualizarNivel(int id, [FromBody] tri_nivel nivelActualizado)
 
@@ -64,7 +64,7 @@ namespace tributrek.Controllers
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error al actualizar paquete: {ex.Message}");
+                Console.WriteLine($"Error al actualizar nivel: {ex.Message}");
                 return StatusCode(500, "Error interno del servidor");
             }
         }

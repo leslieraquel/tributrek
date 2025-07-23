@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using tributrek.Aplicacion.DTO.DTOs;
 using tributrek.Aplicacion.Servicio;
 using tributrek.Dominio.Modelo.Abstracciones;
 using tributrek.Infraestructura.AccesoDatos;
@@ -46,5 +47,11 @@ namespace tributrek.Aplicacion.ServicioImpl
         {
             await rolRepositorio.UpdateAsync(Entity);
         }
+
+        public async Task<List<RolDTO>> listarRol()
+        {
+            return await rolRepositorio.listarRol();
+        }
     }
-}
+    }
+

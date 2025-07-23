@@ -24,5 +24,7 @@ namespace tributrek.Aplicacion.Servicio
 
         [OperationContract]
         Task<List<NivelDTO>> listarNiveles();//listar todo
+        [OperationContract]
+        Task<List<NivelListarDTO>> listarNivel();
     }
 }

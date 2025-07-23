@@ -74,7 +74,7 @@ namespace tributrek.Controllers
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error al actualizar itinerario: {ex.Message}");
+                Console.WriteLine($"Error al actualizar usuario: {ex.Message}");
                 return StatusCode(500, "Error interno del servidor");
             }
         }

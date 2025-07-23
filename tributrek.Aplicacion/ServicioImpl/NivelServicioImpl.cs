@@ -44,5 +44,10 @@ namespace tributrek.Aplicacion.ServicioImpl
             return await nivelRepositorio.listarNiveles();
 
         }
+
+        public async Task<List<NivelListarDTO>> listarNivel()
+        {
+            return await nivelRepositorio.listarNivel();
+        }
     }
 }
