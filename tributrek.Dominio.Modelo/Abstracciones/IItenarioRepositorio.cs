@@ -22,6 +22,9 @@ namespace tributrek.Dominio.Modelo.Abstracciones
 
         Task ActualizarItinerarioAsync(tri_itinerario idItinerario);
 
+        Task EliminarItinerarioAsync(int idItinerario);
+
+
 
     }
 }

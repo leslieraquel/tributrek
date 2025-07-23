@@ -29,10 +29,17 @@ namespace tributrek.Aplicacion.ServicioImpl
 
         }
 
-        public Task ItinerarioDeleteAsync(int id)
+        public async Task ItinerarioDeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            await _iitenerarioRepositorio.EliminarItinerarioAsync(id);
+
         }
+
+        //public Task ItinerarioDeleteAsync(int id)
+        //{
+        //    await _iitenerarioRepositorio.EliminarItinerarioAsync(id);
+
+        //}
 
         public Task<IEnumerable<tri_itinerario>> ItinerarioGetAllAsync()
         {

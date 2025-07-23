@@ -69,7 +69,7 @@ namespace tributrek.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("EliminarItinerario/{id}")]
         public async Task<IActionResult> EliminarItinerario(int id)
         {
             try

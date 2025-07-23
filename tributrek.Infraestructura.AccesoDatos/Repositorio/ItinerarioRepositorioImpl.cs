@@ -43,6 +43,23 @@ namespace tributrek.Infraestructura.AccesoDatos.Repositorio
             }
         }
 
+        public async Task EliminarItinerarioAsync(int idItinerario)
+        {
+            try
+            {
+                var itinerario = await _tributrekContext.tri_itinerario.FindAsync(idItinerario);
+                if (itinerario != null)
+                {
+                    _tributrekContext.tri_itinerario.Remove(itinerario);
+                    await _tributrekContext.SaveChangesAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al eliminar el itinerario: " + ex.Message);
+            }
+        }
+
         public async  Task<List<ItinerarioDTO>> ListarItinerario()
         {
             try

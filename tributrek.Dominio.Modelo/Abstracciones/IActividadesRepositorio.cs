@@ -13,6 +13,8 @@ namespace tributrek.Dominio.Modelo.Abstracciones
         IEnumerable<tri_actividades> buscarRolNombre(String nombre);
         Task<List<ActividadesDTO>> ListarActividades();
 
+        Task ActualizarActividadAsync(tri_actividades idActividad);
+
 
     }
 }

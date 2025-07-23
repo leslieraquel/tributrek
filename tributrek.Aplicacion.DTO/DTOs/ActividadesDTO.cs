@@ -16,6 +16,9 @@ namespace tributrek.Aplicacion.DTO.DTOs
         public string nombreActividad { get; set; }
         public string estadoActividad { get; set; }
 
+        public DateTime? fechaCreacionActividad { get; set; }
+
+
 
     }
 }

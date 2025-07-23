@@ -18,6 +18,11 @@ namespace tributrek.Infraestructura.AccesoDatos.Repositorio
             _tributrekdbContext = dBContext;
         }
 
+        public Task ActualizarActividadAsync(tri_actividades idActividad)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<tri_actividades> buscarRolNombre(string nombre)
         {
             throw new NotImplementedException();
@@ -32,7 +37,8 @@ namespace tributrek.Infraestructura.AccesoDatos.Repositorio
                                        {
                                            idActividad = act.tri_acti_id,
                                            nombreActividad = act.tri_acti_descripcion,
-                                           estadoActividad= act.tri_acti_estado
+                                           estadoActividad= act.tri_acti_estado,
+                                           fechaCreacionActividad= act.tri_acti_fecha_creacion
                                        }).ToListAsync();
 
                 return resultado;
