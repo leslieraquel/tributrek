@@ -23,14 +23,14 @@ namespace tributrek.Aplicacion.ServicioImpl
             categoriaRepositorio = new CategoriaRepositorioImpl(_context);
         }
 
-        public Task CategoriaAddAsync(tri_categoria TEntity)
+        public async Task CategoriaAddAsync(tri_categoria TEntity)
         {
-            throw new NotImplementedException();
+            await categoriaRepositorio.AddAsync(TEntity);
         }
 
-        public Task CategoriaDeleteAsync(int id)
+        public async Task CategoriaDeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            await categoriaRepositorio.DeleteAsync(id);
         }
 
         public Task<IEnumerable<tri_categoria>> CategoriaGetAllAsync()
@@ -43,9 +43,9 @@ namespace tributrek.Aplicacion.ServicioImpl
             throw new NotImplementedException();
         }
 
-        public Task CategoriaUpdateAsync(tri_categoria Entity)
+        public async Task CategoriaUpdateAsync(tri_categoria Entity)
         {
-            throw new NotImplementedException();
+            await categoriaRepositorio.UpdateAsync(Entity);
         }
 
         public async Task<List<CategoriaDTO>> ListarCategorias()

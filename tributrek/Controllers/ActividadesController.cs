@@ -48,7 +48,7 @@ namespace tributrek.Controllers
         }
 
 
-        [HttpPut("{id}")]
+        [HttpPut("ActualizarActividad/{id}")]
         public async Task<IActionResult> ActualizarActvidades(int id, [FromBody] tri_actividades actividadActualizado)
 
         {
@@ -69,7 +69,7 @@ namespace tributrek.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("EliminarActividad/{id}")]
         public async Task<IActionResult> EliminarActividades(int id)
         {
             try
