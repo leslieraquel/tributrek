@@ -30,5 +30,9 @@ namespace tributrek.Aplicacion.Servicio
 
         [OperationContract]
         Task<LoginDTO> AutenticarAsync(string nombre, string clave);
+
+        [OperationContract]
+        Task<List<UsuariosDTO>> listarUsuarios();
+
     }
 }

@@ -21,6 +21,20 @@ namespace tributrek.Controllers
             _usuarioServicio = usuarioServicio;
             _configuration = configuration;
         }
+        [HttpGet("ListarUsuario")]
+        public async Task<IActionResult> ListarUsuario()
+        {
+            try
+            {
+                var categorias = await _usuarioServicio.listarUsuarios();
+                return Ok(categorias);
+            }
+            catch (Exception ex)
+            {
+                // Log el error si es necesario
+                return StatusCode(500, $"Error al obtener categorías: {ex.Message}");
+            }
+        }
 
         [HttpGet]
            public Task<IEnumerable<tri_usuario>> usuarioGetAllAsync() {
@@ -42,10 +56,11 @@ namespace tributrek.Controllers
             }
         }
 
-     
 
-        [HttpPut("{id}")]
+
+        [HttpPut("ActualizarUsuario/{id}")]
         public async Task<IActionResult> ActualizarUsuario(int id, [FromBody] tri_usuario usuarioActualizado)
+
         {
             if (id != usuarioActualizado.tri_usu_id) // Asegúrate que usas el campo correcto como ID
             {
@@ -59,7 +74,7 @@ namespace tributrek.Controllers
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error al actualizar usuario: {ex.Message}");
+                Console.WriteLine($"Error al actualizar itinerario: {ex.Message}");
                 return StatusCode(500, "Error interno del servidor");
             }
         }

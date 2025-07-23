@@ -18,5 +18,7 @@ namespace tributrek.Dominio.Modelo.Abstracciones
 
         Task<List<LoginDTO>> AutenticarAsync(String nombre, String clave);
 
+        Task<List<UsuariosDTO>> listarUsuarios();
+
     }
 }
