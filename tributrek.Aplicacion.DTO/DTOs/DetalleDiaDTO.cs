@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace tributrek.Aplicacion.DTO.DTOs
 {
-    public class NivelDTO
+    public class DetalleDiaDTO
     {
-        public string nombreNivel {  get; set; }
-        public int idNivel { get; set; }
 
-        public string estadoNivel { get; set; }
+        public string Descripcion { get; set; }
     }
 }

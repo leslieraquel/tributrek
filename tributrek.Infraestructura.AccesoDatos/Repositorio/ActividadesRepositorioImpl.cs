@@ -77,9 +77,9 @@ namespace tributrek.Infraestructura.AccesoDatos.Repositorio
                     from act in _tributrekdbContext.tri_actividades
                     select new ActividadesDTO
                     {
-                        tri_acti_id = act.tri_acti_id,
-                        tri_acti_descripcion = act.tri_acti_descripcion,
-                        tri_acti_estado = act.tri_acti_estado,
+                        idActividad = act.tri_acti_id,
+                        nombreActividad = act.tri_acti_descripcion,
+                        estadoActividad = act.tri_acti_estado,
                         tri_acti_fecha_creacion = act.tri_acti_fecha_creacion,
                         tri_acti_fecha_mod = act.tri_acti_fecha_mod
                     }

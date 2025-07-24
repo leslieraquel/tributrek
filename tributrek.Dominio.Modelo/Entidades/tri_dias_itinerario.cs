@@ -2,6 +2,7 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace tributrek.Infraestructura.AccesoDatos;
 
@@ -12,6 +13,9 @@ public partial class tri_dias_itinerario
     public int? tri_dia_numero { get; set; }
 
     public int? tri_idtri_paq_iti { get; set; }
+
+    [JsonIgnore]
+
 
     public virtual ICollection<tri_actividades_dias> tri_actividades_dias { get; set; } = new List<tri_actividades_dias>();
 

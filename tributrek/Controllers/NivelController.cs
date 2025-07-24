@@ -21,7 +21,7 @@ namespace tributrek.Controllers
         {
             try
             {
-                var categorias = await _nivelServicio.listarNivel();
+                var categorias = await _nivelServicio.listarNiveles();
                 return Ok(categorias);
             }
             catch (Exception ex)

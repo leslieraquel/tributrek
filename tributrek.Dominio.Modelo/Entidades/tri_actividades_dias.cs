@@ -2,6 +2,7 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace tributrek.Infraestructura.AccesoDatos;
 
@@ -18,6 +19,7 @@ public partial class tri_actividades_dias
     public TimeOnly? tri_acti_hora_inicio { get; set; }
 
     public TimeOnly? tri_acti_hora_fin { get; set; }
+    [JsonIgnore]
 
     public virtual tri_actividades tri_acti { get; set; }
 

@@ -55,7 +55,8 @@ namespace tributrek.Infraestructura.AccesoDatos.Repositorio
                                       select new NivelDTO
                                       {
                                           nombreNivel = niv.tri_niv_descripcion,
-                                          idNivel = niv.tri_niv_id
+                                          idNivel = niv.tri_niv_id,
+                                          estadoNivel = niv.tri_niv_estado
                                       }).ToListAsync();
 
                 return resultado;
