@@ -49,7 +49,7 @@ namespace tributrek.Controllers
         }
 
 
-        [HttpPut("{id}")]
+        [HttpPut("ActualizarCategoria/{id}")]
         public async Task<IActionResult> Actualizarcategoria(int id, [FromBody] tri_categoria categoriaActualizado)
 
         {

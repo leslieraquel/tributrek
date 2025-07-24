@@ -48,7 +48,7 @@ namespace tributrek.Controllers
         }
 
 
-        [HttpPut("{id}")]
+        [HttpPut("ActualizarActividad/{id}")]
         public async Task<IActionResult> ActualizarActvidades(int id, [FromBody] tri_actividades actividadActualizado)
 
         {
