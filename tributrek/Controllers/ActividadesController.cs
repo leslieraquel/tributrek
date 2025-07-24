@@ -69,7 +69,7 @@ namespace tributrek.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("EliminarActividad/{id}")]
         public async Task<IActionResult> EliminarActividades(int id)
         {
             try

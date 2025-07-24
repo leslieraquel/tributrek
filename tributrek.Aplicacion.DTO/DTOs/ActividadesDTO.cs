@@ -20,5 +20,16 @@ namespace tributrek.Aplicacion.DTO.DTOs
 
 
 
+        public int tri_acti_id { get; set; }
+
+        public string tri_acti_descripcion { get; set; }
+
+        public string tri_acti_estado { get; set; }
+
+        public DateTime? tri_acti_fecha_creacion { get; set; }
+
+        public DateTime? tri_acti_fecha_mod { get; set; }
+
+
     }
 }

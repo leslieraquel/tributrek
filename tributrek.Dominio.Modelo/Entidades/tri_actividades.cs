@@ -2,6 +2,7 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace tributrek.Infraestructura.AccesoDatos;
 
@@ -16,6 +17,6 @@ public partial class tri_actividades
     public DateTime? tri_acti_fecha_creacion { get; set; }
 
     public DateTime? tri_acti_fecha_mod { get; set; }
-
+    [JsonIgnore]
     public virtual ICollection<tri_actividades_dias> tri_actividades_dias { get; set; } = new List<tri_actividades_dias>();
 }
