@@ -39,7 +39,7 @@ namespace tributrek.Controllers
         }
 
 
-        [HttpPut("{id}")]
+        [HttpPut("ActualizarRol/{id}")]
         public async Task<IActionResult> ActualizarRol(int id, [FromBody] tri_rol rolActualizado)
 
         {
@@ -60,7 +60,7 @@ namespace tributrek.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("EliminarRol/{id}")]
         public async Task<IActionResult> EliminarRol(int id)
         {
             try

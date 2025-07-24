@@ -26,8 +26,9 @@ namespace tributrek.Aplicacion.Servicio
 
         [OperationContract]
         Task<List<PaqueteItinerarioCategoriaDTO>> ListarPaqueteItinerarioCategoria();
-        
-        
+
+        [OperationContract]
+        Task<List<PaqueteDTO>> listarPaqueteItinerario();
 
     }
 }

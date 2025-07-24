@@ -37,7 +37,7 @@ namespace tributrek.Controllers
         }
 
 
-        [HttpPut("{id}")]
+        [HttpPut("ActividadesDias/{id}")]
         public async Task<IActionResult> ActualizarActvidadesDias(int id, [FromBody] tri_actividades_dias actidiasActualizado)
 
         {
@@ -58,7 +58,7 @@ namespace tributrek.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("ActividadesDias/{id}")]
         public async Task<IActionResult> EliminarActividadesServicio(int id)
         {
             try

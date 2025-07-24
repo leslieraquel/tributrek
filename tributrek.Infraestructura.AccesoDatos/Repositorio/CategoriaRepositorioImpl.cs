@@ -68,7 +68,8 @@ namespace tributrek.Infraestructura.AccesoDatos.Repositorio
                                        select new CategoriaDTO
                                        {
                                            tri_id_cat = cat.tri_cat_id,
-                                           tri_cat_nombre = cat.tri_cat_nombre
+                                           tri_cat_nombre = cat.tri_cat_nombre,
+                                            tri_cat_estado = cat.tri_cat_estado
                                        }).ToListAsync();
 
                 return resultado;
@@ -77,7 +78,7 @@ namespace tributrek.Infraestructura.AccesoDatos.Repositorio
             catch (Exception e)
             {
 
-                throw new Exception("Error al listar consulta," + e.Message);
+                throw new Exception("Error al listar Categoria," + e.Message);
             }
         }
 

@@ -15,9 +15,6 @@ namespace tributrek.Aplicacion.DTO.DTOs
 
         public string tri_cat_estado { get; set; }
 
-        public DateTime? tri_fecha_creacion { get; set; }
-
-        public DateTime? tri_fecha_mod { get; set; }
 
     }
 }

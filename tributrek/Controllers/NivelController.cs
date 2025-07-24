@@ -48,7 +48,7 @@ namespace tributrek.Controllers
 
 
 
-        [HttpPut("{id}")]
+        [HttpPut("ActualizarNivel/{id}")]
         public async Task<IActionResult> ActualizarNivel(int id, [FromBody] tri_nivel nivelActualizado)
 
         {
@@ -69,8 +69,8 @@ namespace tributrek.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> EliminarPaquete(int id)
+        [HttpDelete("EliminarPaquete/{id}")]
+        public async Task<IActionResult> EliminarNivel(int id)
         {
             try
             {
@@ -79,7 +79,7 @@ namespace tributrek.Controllers
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error al eliminar paquete: {ex.Message}");
+                Console.WriteLine($"Error al eliminar nive: {ex.Message}");
                 return StatusCode(500, "Error interno del servidor");
             }
         }

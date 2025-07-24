@@ -13,43 +13,50 @@ namespace tributrek.Aplicacion.ServicioImpl
 {
     public class PaqueteItinerarioServicioImpl : IPaqueteItinerarioServicio
     {
-        private readonly IPaqueteItinerarioRepositorio _ipaqueteitenerarioRepositorio;
+        private IPaqueteItinerarioRepositorio paqueteitenerarioRepositorio;
         private readonly tributrekContext _context;
-
 
         public PaqueteItinerarioServicioImpl(tributrekContext tributrekContext)
         {
             _context = tributrekContext;
-            _ipaqueteitenerarioRepositorio = new PaqueteItinerarioRepositorioImpl(_context);
+            paqueteitenerarioRepositorio = new PaqueteItinerarioRepositorioImpl(_context);
 
+        }
+        public async Task<List<PaqueteDTO>> listarPaqueteItinerario()
+        {
+            return await paqueteitenerarioRepositorio.listarPaqueteItinerario();
+        }
+        public async Task PaqueteAddAsync(tri_paquete_itinerario TEntity)
+        {
+            await paqueteitenerarioRepositorio.AddAsync(TEntity);
+        }
+
+        public async Task PaqueteUpdateAsync(tri_paquete_itinerario Entity)
+        {
+            await paqueteitenerarioRepositorio.UpdateAsync(Entity);
+        }
+
+        public async Task PaqueteDeleteAsync(int id)
+        {
+            await paqueteitenerarioRepositorio.DeleteAsync(id);
+        }
+
+        public Task<IEnumerable<tri_paquete_itinerario>> PaqueteGetAllAsync()
+        {
+            return paqueteitenerarioRepositorio.GetAllAsync();
+        }
+
+        public Task<tri_paquete_itinerario> PaqueteGetByIdAsync(int id)
+        {
+            return paqueteitenerarioRepositorio.GetByIdAsync(id);
         }
 
         public Task<List<PaqueteItinerarioCategoriaDTO>> ListarPaqueteItinerarioCategoria()
         {
-            return this._ipaqueteitenerarioRepositorio.ListarPaqueteItinerarioCategoria();
-        }
-
-        public Task PaqueteAddAsync(tri_paquete_itinerario TEntity)
-        {
             throw new NotImplementedException();
-        }
-
-        public Task PaqueteDeleteAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<IEnumerable<tri_paquete_itinerario>> PaqueteGetAllAsync()
-        {
-            return await this._ipaqueteitenerarioRepositorio.ListarPaquetes();
         }
 
         public Task<tri_paquete_itinerario> PaqueteGetByIdAseync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task PaqueteUpdateAsync(tri_paquete_itinerario Entity)
         {
             throw new NotImplementedException();
         }

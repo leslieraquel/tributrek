@@ -21,6 +21,20 @@ namespace tributrek.Controllers
         {
             return _paqueteServicio.PaqueteGetAllAsync();
         }
+        [HttpGet("ListarPaquete")]
+        public async Task<IActionResult> listarPaqueteItinerario()
+        {
+            try
+            {
+                var categorias = await _paqueteServicio.listarPaqueteItinerario();
+                return Ok(categorias);
+            }
+            catch (Exception ex)
+            {
+                // Log el error si es necesario
+                return StatusCode(500, $"Error al obtener categorías: {ex.Message}");
+            }
+        }
 
         [HttpPost("CrearPaquete")]
         public async Task<IActionResult> CrearPaquete([FromBody] tri_paquete_itinerario nuevopaquete)
@@ -38,8 +52,8 @@ namespace tributrek.Controllers
         }
 
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> ActualizarRol(int id, [FromBody] tri_paquete_itinerario paqueteActualizado)
+        [HttpPut("ActualizarPaquete/{id}")]
+        public async Task<IActionResult> ActualizarPaquete(int id, [FromBody] tri_paquete_itinerario paqueteActualizado)
 
         {
             if (id != paqueteActualizado.idtri_paq_iti) // Asegúrate que usas el campo correcto como ID
@@ -59,7 +73,7 @@ namespace tributrek.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("EliminarPaquete/{id}")]
         public async Task<IActionResult> EliminarPaquete(int id)
         {
             try

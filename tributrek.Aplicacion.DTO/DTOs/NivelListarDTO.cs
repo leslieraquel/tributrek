@@ -17,3 +17,5 @@ namespace tributrek.Aplicacion.DTO.DTOs
         public string tri_niv_descripcion { get; set; }
     }
 }
+
+

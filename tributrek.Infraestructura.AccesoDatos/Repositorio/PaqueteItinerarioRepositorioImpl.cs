@@ -19,6 +19,37 @@ namespace tributrek.Infraestructura.AccesoDatos.Repositorio
             this._tributrekdbContext = dbContext;
         }
 
+        public async Task<List<PaqueteDTO>> listarPaqueteItinerario()
+        {
+            try
+            {
+
+                {
+                    var result = await (from iti in _tributrekdbContext.tri_itinerario
+                                        join paq in _tributrekdbContext.tri_paquete_itinerario
+                                        on iti.tri_itine_id equals paq.tri_paq_idtri_itine
+                                        select new PaqueteDTO
+                                        {
+                                            tri_itine_nombre = iti.tri_itine_nombre,
+                                            tri_paq_idtri_itine = paq.tri_paq_idtri_itine,
+                                            tri_paq_iti_cantidad_dias = paq.tri_paq_iti_cantidad_dias,
+                                            tri_paq_iti_descripcion = paq.tri_paq_iti_descripcion,
+                                            tri_paq_nombre = paq.tri_paq_nombre,
+                                            idtri_paq_iti = paq.idtri_paq_iti
+
+                                        }).ToListAsync();
+
+                    return result;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al listar" + ex.Message);
+            }
+        }
+        
+
         public async Task<List<PaqueteItinerarioCategoriaDTO>> ListarPaqueteItinerarioCategoria()
         {
             try
