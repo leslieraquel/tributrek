@@ -30,11 +30,11 @@ namespace tributrek.Infraestructura.AccesoDatos.Repositorio
             }
         }
 
-        public async Task ActualizarCategoriaAsync(tri_categoria categoria)
+        public async Task ActualizarCategoriaAsync(tri_categoria idCategoria)
         {
             try
             {
-                _tributrekContext.tri_categoria.Update(categoria);
+                _tributrekContext.tri_categoria.Update(idCategoria);
                 await _tributrekContext.SaveChangesAsync();
             }
             catch (Exception ex)
@@ -42,6 +42,7 @@ namespace tributrek.Infraestructura.AccesoDatos.Repositorio
                 throw new Exception("Error al actualizar la categoría: " + ex.Message);
             }
         }
+   
 
         public async Task EliminarCategoriaAsync(int idCategoria)
         {
@@ -67,7 +68,7 @@ namespace tributrek.Infraestructura.AccesoDatos.Repositorio
                 var resultado = await (from cat in _tributrekContext.tri_categoria
                                        select new CategoriaDTO
                                        {
-                                           tri_id_cat = cat.tri_cat_id,
+                                           tri_cat_id = cat.tri_cat_id,
                                            tri_cat_nombre = cat.tri_cat_nombre,
                                             tri_cat_estado = cat.tri_cat_estado
                                        }).ToListAsync();
@@ -82,5 +83,6 @@ namespace tributrek.Infraestructura.AccesoDatos.Repositorio
             }
         }
 
+       
     }
 }

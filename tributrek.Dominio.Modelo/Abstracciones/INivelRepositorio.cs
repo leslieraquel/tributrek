@@ -13,5 +13,10 @@ namespace tributrek.Dominio.Modelo.Abstracciones
         Task<List<NivelDTO>> listarNiveles();
         Task<List<NivelListarDTO>> listarNivel();
 
+        Task AgregarNivelAsync(tri_nivel nivel);
+        Task ActualizarNivelAsync(tri_nivel idNivel);
+
+
+
     }
 }

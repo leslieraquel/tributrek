@@ -15,6 +15,9 @@ namespace tributrek.Dominio.Modelo.Abstracciones
 
         Task ActualizarActividadAsync(tri_actividades idActividad);
 
+        Task EliminarActividadAsync(tri_actividades idActividad);
+
+
 
     }
 }

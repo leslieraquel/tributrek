@@ -15,6 +15,9 @@ namespace tributrek.Dominio.Modelo.Abstracciones
 
         Task<List<CategoriaDTO>> ListarCategorias();
 
+        Task ActualizarCategoriaAsync(tri_categoria idCategoria);
+
+
 
     }
 }

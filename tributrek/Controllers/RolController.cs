@@ -17,10 +17,19 @@ namespace tributrek.Controllers
             _rolServicio = rolServicio;
         }
 
-        [HttpGet]
-        public Task<IEnumerable<tri_rol>> rolGetAllAsync()
+        [HttpGet("ListarRol")]
+        public async Task<IActionResult> listarRol()
         {
-            return _rolServicio.rolGetAllAsync();
+            try
+            {
+                var roles = await _rolServicio.listarRol();
+                return Ok(roles);
+            }
+            catch (Exception ex)
+            {
+                // Log el error si es necesario
+                return StatusCode(500, $"Error al obtener categorías: {ex.Message}");
+            }
         }
 
         [HttpPost("CrearRol")]

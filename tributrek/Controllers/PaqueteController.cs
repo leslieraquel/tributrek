@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using tributrek.Aplicacion.DTO.DTOs;
 using tributrek.Aplicacion.Servicio;
 using tributrek.Infraestructura.AccesoDatos;
 
@@ -87,5 +88,33 @@ namespace tributrek.Controllers
                 return StatusCode(500, "Error interno del servidor");
             }
         }
+
+        //[HttpPost("CrearConDias")]
+        //public async Task<IActionResult> CrearConDias([FromBody] PaqueteConDiasDto dto)
+        //{
+        //    var paquete = new Paquete
+        //    {
+        //        tri_paq_iti_descripcion = dto.Descripcion,
+        //        tri_paq_iti_cantidad_dias = dto.CantidadDias,
+        //        tri_paq_idtri_itine = dto.IdItinerario
+        //    };
+
+        //    _context.Paquete.Add(paquete);
+        //    await _context.SaveChangesAsync(); // para generar el ID
+
+        //    foreach (var detalle in dto.Detalles)
+        //    {
+        //        var dia = new DetallePaquete
+        //        {
+        //            IdPaquete = paquete.Id,
+        //            Descripcion = detalle.Descripcion,
+        //            NumeroDia = dto.Detalles.IndexOf(detalle) + 1
+        //        };
+        //        _context.DetallePaquete.Add(dia);
+        //    }
+
+        //    await _context.SaveChangesAsync();
+        //    return Ok(new { message = "Paquete y días creados con éxito" });
+        //}
     }
 }

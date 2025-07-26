@@ -30,5 +30,8 @@ namespace tributrek.Aplicacion.Servicio
         [OperationContract]
         Task<List<PaqueteDTO>> listarPaqueteItinerario();
 
+        //[OperationContract]
+        //Task crearPaqueteDias(PaqueteConDiasDTO TEntity);
+
     }
 }

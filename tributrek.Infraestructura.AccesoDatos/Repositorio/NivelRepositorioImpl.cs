@@ -17,6 +17,34 @@ namespace tributrek.Infraestructura.AccesoDatos.Repositorio
             this._tributrekContext = dBContext;
         }
 
+        public async Task ActualizarNivelAsync(tri_nivel idNivel)
+        {
+            try
+            {
+                _tributrekContext.tri_nivel.Update(idNivel); // Agrega el objeto al contexto
+                await _tributrekContext.SaveChangesAsync();       // Guarda los cambios en la BD
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al agregar el itinerario: " + ex.Message);
+            }
+        }
+
+    
+
+        public async Task AgregarNivelAsync(tri_nivel nivel)
+        {
+            try
+            {
+                _tributrekContext.tri_nivel.Add(nivel); // Agrega el objeto al contexto
+                await _tributrekContext.SaveChangesAsync();       // Guarda los cambios en la BD
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al agregar nivel: " + ex.Message);
+            }
+        }
+
         public async Task<List<NivelListarDTO>> listarNivel()
         {
             try
@@ -54,7 +82,7 @@ namespace tributrek.Infraestructura.AccesoDatos.Repositorio
                 var resultado = await(from niv in _tributrekContext.tri_nivel
                                       select new NivelDTO
                                       {
-                                          nombreNivel = niv.tri_niv_descripcion,
+                                          nombreNivel = niv.tri_niv_dificultad,
                                           idNivel = niv.tri_niv_id,
                                           estadoNivel = niv.tri_niv_estado
                                       }).ToListAsync();

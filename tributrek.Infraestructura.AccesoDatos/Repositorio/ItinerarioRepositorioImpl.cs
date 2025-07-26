@@ -16,7 +16,7 @@ namespace tributrek.Infraestructura.AccesoDatos.Repositorio
         {
             this._tributrekContext = dbContext;
         }
-        
+
         public async Task ActualizarItinerarioAsync(tri_itinerario idItinerario)
         {
             try

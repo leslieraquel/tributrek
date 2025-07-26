@@ -23,9 +23,10 @@ namespace tributrek.Aplicacion.ServicioImpl
             nivelRepositorio = new NivelRepositorioImpl(_context);
         }
 
-        public Task actualizarNivel(tri_nivel Entity)
+        public async Task actualizarNivel(tri_nivel Entity)
         {
-            throw new NotImplementedException();
+            await nivelRepositorio.UpdateAsync(Entity);
+
         }
 
         public async Task agregarNivel(tri_nivel TEntity)

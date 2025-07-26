@@ -52,7 +52,7 @@ namespace tributrek.Infraestructura.AccesoDatos.Repositorio
         }
 
         // Eliminar actividad por ID
-        public async Task EliminarActividadAsync(int idActividad)
+        public async Task EliminarActividadAsync(tri_actividades idActividad)
         {
             try
             {
