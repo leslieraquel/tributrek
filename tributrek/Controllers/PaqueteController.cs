@@ -38,18 +38,15 @@ namespace tributrek.Controllers
         }
 
         [HttpPost("CrearPaquete")]
-        public async Task<IActionResult> CrearPaquete([FromBody] tri_paquete_itinerario nuevopaquete)
+   
+
+        public async Task<IActionResult> CrearPaquete([FromBody] PaqueteItinerarioDTO dto)
         {
-            try
-            {
-                await _paqueteServicio.PaqueteAddAsync(nuevopaquete);
-                return Ok();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error: {ex.Message}");
-                return StatusCode(500, "Error interno");
-            }
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            await _paqueteServicio.PaqueteAddAsync(dto);
+            return Ok(new { mensaje = "Paquete creado exitosamente" });
         }
 
 

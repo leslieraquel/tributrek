@@ -19,5 +19,6 @@ namespace tributrek.Aplicacion.DTO.DTOs
 
         public string tri_itine_nombre { get; set; }
 
+
     }
 }

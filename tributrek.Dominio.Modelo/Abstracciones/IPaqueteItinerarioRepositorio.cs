@@ -16,6 +16,8 @@ namespace tributrek.Dominio.Modelo.Abstracciones
 
         Task<List<PaqueteDTO>> listarPaqueteItinerario();
 
+        Task AgregarPaqueteItinerarioAsync(tri_paquete_itinerario paqueteItinerario);
+
 
 
 

@@ -14,7 +14,7 @@ namespace tributrek.Aplicacion.Servicio
     {
 
         [OperationContract]
-        Task PaqueteAddAsync(tri_paquete_itinerario TEntity); //insertar
+        Task PaqueteAddAsync( PaqueteItinerarioDTO dto); //insertar
         [OperationContract]
         Task PaqueteUpdateAsync(tri_paquete_itinerario Entity); //Actualizar
         [OperationContract]

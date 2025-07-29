@@ -26,9 +26,32 @@ namespace tributrek.Aplicacion.ServicioImpl
         {
             return await paqueteitenerarioRepositorio.listarPaqueteItinerario();
         }
-        public async Task PaqueteAddAsync(tri_paquete_itinerario TEntity)
+        public async Task PaqueteAddAsync(PaqueteItinerarioDTO dto)
         {
-            await paqueteitenerarioRepositorio.AddAsync(TEntity);
+            var entidad = new tri_paquete_itinerario
+            {
+                tri_paq_iti_cantidad_dias = dto.CantidadDiasPaquete,
+                tri_paq_iti_descripcion = dto.DescripcionPaquete,
+                tri_paq_idtri_itine = dto.IdItinerario,
+                tri_paq_fecha_inicio = dto.FechaInicio.ToDateTime(new TimeOnly(0, 0)),
+                tri_paq_fecha_fin = dto.FechaFin.ToDateTime(new TimeOnly(0, 0)),
+                tri_paq_nombre = dto.DescripcionPaquete,
+                tri_dias_itinerario = dto.DetallesPaq.Select(d => new tri_dias_itinerario
+                {
+                    tri_dia_numero = d.Dianumero,
+                    // idpaquete se ignora, EF lo gestiona
+                        tri_actividades_dias = d.Actividades.Select(a => new tri_actividades_dias
+                        {
+                            tri_acti_orden = a.orden,
+                            tri_acti_hora_inicio=a.HoraInicio,
+                            tri_acti_hora_fin=a.HoraFin,
+                            tri_acti_id=a.idActividad
+
+                    }).ToList()
+                }).ToList()
+            };
+
+            await paqueteitenerarioRepositorio.AgregarPaqueteItinerarioAsync(entidad);
         }
 
         public async Task PaqueteUpdateAsync(tri_paquete_itinerario Entity)

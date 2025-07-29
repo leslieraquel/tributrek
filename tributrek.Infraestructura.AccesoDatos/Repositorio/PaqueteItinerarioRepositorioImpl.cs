@@ -19,6 +19,21 @@ namespace tributrek.Infraestructura.AccesoDatos.Repositorio
             this._tributrekdbContext = dbContext;
         }
 
+        public async Task AgregarPaqueteItinerarioAsync(tri_paquete_itinerario paqueteItinerario)
+        {
+            try
+            {
+                // Insertar el paquete con sus días itinerario (en cascada)
+                _tributrekdbContext.tri_paquete_itinerario.Add(paqueteItinerario);
+                await _tributrekdbContext.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al insertar paquete itinerario: " + ex.Message);
+            }
+        }
+
+
         public async Task<List<PaqueteDTO>> listarPaqueteItinerario()
         {
             try
