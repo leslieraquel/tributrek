@@ -11,8 +11,8 @@ namespace tributrek.Aplicacion.DTO.DTOs
         public int CantidadDiasPaquete { get; set; }
         public string DescripcionPaquete { get; set; }
         public int IdItinerario { get; set; }
-        public DateOnly FechaInicio { get; set; }
-        public DateOnly FechaFin { get; set; }
+        //public DateOnly FechaInicio { get; set; }
+        //public DateOnly FechaFin { get; set; }
         public List<PaqueteDias> DetallesPaq { get; set; } = new List<PaqueteDias>();
     }
 

@@ -86,6 +86,17 @@ namespace tributrek.Controllers
             }
         }
 
+        [HttpGet("obtener-paquete/{id}")]
+        public async Task<IActionResult> ObtenerPaquetePorId(int id)
+        {
+            var paquete = await _paqueteServicio.ObtenerPaqueteConActividades(id);
+            if (paquete == null)
+                return NotFound("No existe el paquete");
+
+            return Ok(paquete);
+        }
+       
+
         //[HttpPost("CrearConDias")]
         //public async Task<IActionResult> CrearConDias([FromBody] PaqueteConDiasDto dto)
         //{

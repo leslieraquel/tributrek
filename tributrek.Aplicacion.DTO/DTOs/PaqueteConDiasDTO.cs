@@ -13,5 +13,8 @@ namespace tributrek.Aplicacion.DTO.DTOs
         public int CantidadDias { get; set; }
         public int IdItinerario { get; set; }
         public List<DetalleDiaDTO> Detalles { get; set; }
+        public int IdPaquete { get; set; }
+        public string NombrePaquete { get; set; }
+        public int CantidadDiasPaquete { get; set; }
     }
 }

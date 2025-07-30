@@ -83,5 +83,7 @@ namespace tributrek.Controllers
                 return StatusCode(500, "Error interno del servidor");
             }
         }
+
+
     }
 }

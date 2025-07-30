@@ -22,5 +22,6 @@ namespace tributrek.Dominio.Modelo.Abstracciones
 
 
 
+
     }
 }
