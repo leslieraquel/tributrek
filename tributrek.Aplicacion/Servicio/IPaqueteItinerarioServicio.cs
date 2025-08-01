@@ -32,8 +32,9 @@ namespace tributrek.Aplicacion.Servicio
 
         [OperationContract]
         Task<PaqueteConDiasDetDTO> ObtenerPaqueteConActividades(int idPaquete);
-        [OperationContract]
 
+
+        [OperationContract]
         Task EditarPaqueteAsync(PaqueteConDiasDetDTO dto);
 
 

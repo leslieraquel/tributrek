@@ -96,6 +96,7 @@ namespace tributrek.Aplicacion.ServicioImpl
                 select new
                 {
                     IdPaquete = tpi.idtri_paq_iti,
+                    idItinerario = tpi.tri_paq_idtri_itine,
                     NombrePaquete = tpi.tri_paq_iti_descripcion,
                     CantidadDias = tpi.tri_paq_iti_cantidad_dias,
                     NumeroDia = tdi.tri_dia_numero,
@@ -113,6 +114,7 @@ namespace tributrek.Aplicacion.ServicioImpl
             var paqueteDto = new PaqueteConDiasDetDTO
             {
                 IdPaquete = first.IdPaquete,
+                idItinerario= first.idItinerario,
                 descripcionPaquete = first.NombrePaquete,
                 CantidadDiasPaquete = first.CantidadDias ?? 0,
                 DetallesPaq = query
