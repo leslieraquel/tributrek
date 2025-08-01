@@ -51,23 +51,20 @@ namespace tributrek.Controllers
 
 
         [HttpPut("ActualizarPaquete/{id}")]
-        public async Task<IActionResult> ActualizarPaquete(int id, [FromBody] tri_paquete_itinerario paqueteActualizado)
+        public async Task<IActionResult> ActualizarPaquete(int id, [FromBody] PaqueteConDiasDetDTO dto)
 
         {
-            if (id != paqueteActualizado.idtri_paq_iti) // Asegúrate que usas el campo correcto como ID
-            {
-                return BadRequest("El ID de la URL no coincide con el del cuerpo.");
-            }
+            if (id != dto.IdPaquete)
+                return BadRequest("El ID no coincide");
 
             try
             {
-                await _paqueteServicio.PaqueteUpdateAsync(paqueteActualizado);
-                return Ok();
+                await _paqueteServicio.EditarPaqueteAsync(dto);
+                return Ok("Actualizado correctamente");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error al actualizar paquete: {ex.Message}");
-                return StatusCode(500, "Error interno del servidor");
+                return BadRequest(ex.Message);
             }
         }
 
@@ -95,7 +92,8 @@ namespace tributrek.Controllers
 
             return Ok(paquete);
         }
-       
+
+
 
         //[HttpPost("CrearConDias")]
         //public async Task<IActionResult> CrearConDias([FromBody] PaqueteConDiasDto dto)

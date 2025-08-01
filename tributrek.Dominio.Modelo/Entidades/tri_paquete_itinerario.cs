@@ -22,7 +22,7 @@ public partial class tri_paquete_itinerario
 
     public string tri_paq_nombre { get; set; }
 
-    //[JsonIgnore]
+    [JsonIgnore]
 
     public virtual ICollection<tri_dias_itinerario> tri_dias_itinerario { get; set; } = new List<tri_dias_itinerario>();
 

@@ -26,9 +26,7 @@ namespace tributrek.Aplicacion.DTO.DTOs
     public class ActividadDiaDTO
     {
         public int orden { get; set; }
-        public int idPaqueteItinerario { get; set; }
         public int idActividad { get; set; }
-
         public TimeOnly HoraInicio { get; set; }
 
         public TimeOnly HoraFin { get; set; }

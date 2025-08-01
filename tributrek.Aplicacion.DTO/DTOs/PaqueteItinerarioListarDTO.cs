@@ -10,18 +10,13 @@ namespace tributrek.Aplicacion.DTO.DTOs
     public class PaqueteConDiasDetDTO
     {
         public int? IdPaquete { get; set; }
-        public string NombrePaquete { get; set; }
+        public string descripcionPaquete { get; set; }
+
+        public int? idItinerario { get; set; }
+
         public int CantidadDiasPaquete { get; set; }
-        public string NombreNivel { get; set; }
 
         public List<DiaDTO> DetallesPaq { get; set; } = new();
-    }
-
-    public class ActividadDTO
-    {
-        public int? IdActividad { get; set; }
-        public string InicioActividad { get; set; }
-        public string FinActividad { get; set; }
     }
 
     public class DiaDTO
@@ -30,6 +25,13 @@ namespace tributrek.Aplicacion.DTO.DTOs
         public int IdPaquete { get; set; }
         public List<ActividadDTO> Actividades { get; set; } = new();
     }
+    public class ActividadDTO
+    {
+        public int? IdActividad { get; set; }
+        public string horaInicio { get; set; }
+        public string horaFin { get; set; }
+    }
+
 
 
 

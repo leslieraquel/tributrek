@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
@@ -39,7 +40,7 @@ namespace tributrek.Aplicacion.ServicioImpl
                 tri_paq_nombre = dto.DescripcionPaquete,
                 tri_dias_itinerario = dto.DetallesPaq.Select(d => new tri_dias_itinerario
                 {
-                    tri_dia_numero = d.Dianumero,
+                     tri_dia_numero = d.Dianumero,
                     // idpaquete se ignora, EF lo gestiona
                         tri_actividades_dias = d.Actividades.Select(a => new tri_actividades_dias
                         {
@@ -85,57 +86,104 @@ namespace tributrek.Aplicacion.ServicioImpl
             throw new NotImplementedException();
         }
 
-        public async  Task<PaqueteConDiasDetDTO> ObtenerPaqueteConActividades(int idPaquete)
+        public async Task<PaqueteConDiasDetDTO> ObtenerPaqueteConActividades(int idPaquete)
         {
-            var query = await(
-        from tpi in _context.tri_paquete_itinerario
-        join tdi in _context.tri_dias_itinerario on tpi.tri_paq_idtri_itine equals tdi.tri_idtri_paq_iti
-        join tad in _context.tri_actividades_dias on tdi.tri_dia_itine equals tad.tri_dia_itine
-        join ta in _context.tri_actividades on tad.tri_acti_id equals ta.tri_acti_id
-        join ti in _context.tri_itinerario on tpi.tri_paq_idtri_itine equals ti.tri_itine_id
-        join tn in _context.tri_nivel on ti.tri_itine_niv_id equals tn.tri_niv_id
-        where tpi.idtri_paq_iti == idPaquete
-        select new
-        {
-            tpi.idtri_paq_iti,
-            tpi.tri_paq_iti_descripcion,
-            tpi.tri_paq_iti_cantidad_dias,
-            tn.tri_niv_descripcion,
-            tdi.tri_dia_numero,
-            tad.tri_acti_id,
-            tad.tri_acti_hora_inicio,
-            tad.tri_acti_hora_fin
-        }
-    ).ToListAsync();
+           var query = (
+                from tpi in _context.tri_paquete_itinerario
+                join tdi in _context.tri_dias_itinerario on tpi.idtri_paq_iti equals tdi.tri_idtri_paq_iti
+                join tad in _context.tri_actividades_dias on tdi.tri_dia_itine equals tad.tri_dia_itine
+                where tpi.idtri_paq_iti == idPaquete
+                select new
+                {
+                    IdPaquete = tpi.idtri_paq_iti,
+                    NombrePaquete = tpi.tri_paq_iti_descripcion,
+                    CantidadDias = tpi.tri_paq_iti_cantidad_dias,
+                    NumeroDia = tdi.tri_dia_numero,
+                    IdActividad = tad.tri_acti_id,
+                    HoraInicio = tad.tri_acti_hora_inicio,
+                    HoraFin = tad.tri_acti_hora_fin
+                }
+            ).ToList();
 
             if (!query.Any())
                 return null;
 
+            var first = query.First();
+
             var paqueteDto = new PaqueteConDiasDetDTO
             {
-                IdPaquete = query.First().idtri_paq_iti,
-                NombrePaquete = query.First().tri_paq_iti_descripcion,
-                CantidadDiasPaquete = query.First().tri_paq_iti_cantidad_dias ?? 0,
-                NombreNivel = query.First().tri_niv_descripcion,
-            };
-
-            var diasAgrupados = query
-                .GroupBy(x => x.tri_dia_numero)
-                .Select(g => new DiaDTO
-                {
-                    NumeroDia = g.Key,
-                    IdPaquete = query.First().idtri_paq_iti,
-                    Actividades = g.Select(a => new ActividadDTO
+                IdPaquete = first.IdPaquete,
+                descripcionPaquete = first.NombrePaquete,
+                CantidadDiasPaquete = first.CantidadDias ?? 0,
+                DetallesPaq = query
+                    .GroupBy(x => x.NumeroDia)
+                    .Select(g => new DiaDTO
                     {
-                        IdActividad = a.tri_acti_id,
-                        InicioActividad = a.tri_acti_hora_inicio.ToString(),
-                        FinActividad = a.tri_acti_hora_fin.ToString()
+                        NumeroDia = g.Key,
+                        IdPaquete = first.IdPaquete,
+                        Actividades = g.Select(a => new ActividadDTO
+                        {
+                            IdActividad = a.IdActividad,
+                             horaInicio = a.HoraInicio.HasValue ? a.HoraInicio.Value.ToString("HH:mm") : null,
+                            horaFin = a.HoraFin.HasValue ? a.HoraFin.Value.ToString("HH:mm") : null
+                        }).ToList()
                     }).ToList()
-                }).ToList();
-
-            paqueteDto.DetallesPaq = diasAgrupados;
+            };
 
             return paqueteDto;
         }
+        public async Task EditarPaqueteAsync(PaqueteConDiasDetDTO dto)
+        {
+            var paquete = await _context.tri_paquete_itinerario
+                .FirstOrDefaultAsync(p => p.idtri_paq_iti == dto.IdPaquete);
+
+            if (paquete == null)
+                throw new Exception("Paquete no encontrado");
+
+            // Actualizar datos base
+            paquete.tri_paq_iti_descripcion = dto.descripcionPaquete;
+            paquete.tri_paq_iti_cantidad_dias = dto.CantidadDiasPaquete;
+
+            // Obtener días actuales del paquete
+            var dias = await _context.tri_dias_itinerario
+                .Where(d => d.tri_idtri_paq_iti == dto.IdPaquete)
+                .ToListAsync();
+
+            // Obtener IDs de los días
+            var idsDias = dias.Select(d => d.tri_dia_itine).ToList();
+
+            // Obtener actividades relacionadas
+            var actividades = await _context.tri_actividades_dias
+                .Where(a => a.tri_dia_itine != null && idsDias.Contains(a.tri_dia_itine.Value))
+                .ToListAsync();
+
+            // Eliminar registros antiguos
+            _context.tri_actividades_dias.RemoveRange(actividades);
+            _context.tri_dias_itinerario.RemoveRange(dias);
+
+            // Insertar nuevos días y actividades
+            foreach (var diaDto in dto.DetallesPaq)
+            {
+                var nuevoDia = new tri_dias_itinerario
+                {
+                    tri_idtri_paq_iti = dto.IdPaquete,
+                    tri_dia_numero = diaDto.NumeroDia,
+                    tri_actividades_dias = diaDto.Actividades.Select(a => new tri_actividades_dias
+                    {
+                        tri_acti_id = a.IdActividad,
+                        tri_acti_hora_inicio = !string.IsNullOrEmpty(a.horaInicio) ? TimeOnly.Parse(a.horaInicio) : null,
+                        tri_acti_hora_fin = !string.IsNullOrEmpty(a.horaFin) ? TimeOnly.Parse(a.horaFin) : null
+                    }).ToList()
+                };
+
+                _context.tri_dias_itinerario.Add(nuevoDia);
+            }
+
+            // Guardar cambios
+            await _context.SaveChangesAsync();
+        }
+
     }
+
+
 }

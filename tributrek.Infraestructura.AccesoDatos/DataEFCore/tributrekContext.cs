@@ -61,7 +61,8 @@ public partial class tributrekContext : DbContext
         {
             entity.HasKey(e => e.tri_acti_dia_id).HasName("PK_ID_ACTIVIDADES_DIAS");
 
-            entity.HasOne(d => d.tri_acti).WithMany(p => p.tri_actividades_dias)
+            entity.HasOne(d => d.tri_acti)
+                .WithMany(p => p.tri_actividades_dias)
                 .HasForeignKey(d => d.tri_acti_id)
                 .HasConstraintName("FK_ID_ACTIVIDAD");
 
@@ -95,6 +96,11 @@ public partial class tributrekContext : DbContext
             entity.HasOne(d => d.tri_idtri_paq_itiNavigation).WithMany(p => p.tri_dias_itinerario)
                 .HasForeignKey(d => d.tri_idtri_paq_iti)
                 .HasConstraintName("FK_ID_PAQUETEITINERARIO");
+
+            entity.HasMany(d => d.tri_actividades_dias)
+            .WithOne(a => a.tri_dia_itineNavigation)
+            .HasForeignKey(a => a.tri_dia_itine)
+            .HasConstraintName("FK_ACTIVIDADES_DIAS");
         });
 
         modelBuilder.Entity<tri_itinerario>(entity =>

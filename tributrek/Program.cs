@@ -34,7 +34,9 @@ builder.Services.AddScoped<INivelServicio, NivelServicioImpl>();
 builder.Services.AddScoped<IActividadesServicio, ActividadesServicioImpl>();
 
 builder.Services.AddScoped<IRolServicio, RolServicioImpl>();
+
 builder.Services.AddScoped<IPaqueteItinerarioServicio, PaqueteItinerarioServicioImpl>();
+
 
 
 
